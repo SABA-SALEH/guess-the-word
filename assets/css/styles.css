@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Erica+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
+    font-family: 'Lilita One', sans-serif;
 }
 
 .welcome-container {
@@ -60,7 +61,7 @@ body {
     padding: 2em; 
     border-radius: 25px;
     text-align: center;
-    box-shadow: 0 0 20px rgb(237, 222, 7);
+    box-shadow: 0 0 20px rgb(7, 187, 237);
     width: 70%;
     margin-top: 20px;
 }
@@ -72,8 +73,7 @@ body {
     font-size: 2em;
     border: none;
     width: 40%; 
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold; 
+    font-family: 'Lilita One', sans-serif;
     border-radius: 25px;
 }
 
@@ -114,5 +114,38 @@ body {
 @media screen and (max-width: 900px) and (min-width: 300px) {
     .card {
         width: 90%; 
+    }
+}
+
+/* home page styles */
+
+.animated-text{
+    animation: bounce 1.5s infinite;
+    font-family: 'Erica One', sans-serif; 
+    color: #db344d;
+}
+
+.category-buttons {
+    margin-top: 40px;
+}
+
+.category-button {
+    margin: 10px;
+    font-size: 1.5em;
+    border-radius: 15px;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.colors { background-color: #3498dbcf; }
+.shapes { background-color: #27ae5fca; }
+.fruits { background-color: #e74d3cba; }
+.vegetables { background-color: #f39d12bd; }
+.numbers { background-color: #db3469c7; }
+.weather { background-color: #5b27aebc; }
+
+
+@media (max-width: 576px) {
+    .category-button {
+        font-size: 1em;
     }
 }
