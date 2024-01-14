@@ -23,14 +23,14 @@ body {
 }
 
 
-.letter-boxes {
+.letter-circles {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
 }
 
-.letter-box {
+.letter-circle {
     width: 2em; 
     height: 2em; 
     display: flex;
@@ -96,7 +96,7 @@ body {
 
 /* Responsive design */
 @media (max-width: 576px) {
-    .letter-box {
+    .letter-circle {
         width: 2em;
         height: 2em; 
         font-size: 1em; 
@@ -149,3 +149,16 @@ body {
         font-size: 1em;
     }
 }
+/* guess-game --------------------------------------------------------*/
+.guess-game-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('/assets/images/background.jpg') center/cover no-repeat; 
+}
+
+
+
