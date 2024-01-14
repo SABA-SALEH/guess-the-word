@@ -108,7 +108,7 @@ function initializeGuessGame() {
 
     displayHint(hint);
     setupLives();
-    setupUI();
+    setupUI(selectedWord);
 }
 
 
@@ -124,8 +124,20 @@ function setupLives() {
     console.log('Setting up initial lives...');
 }
 
-function setupUI() {
+function setupUI(selectedWord) {
+    displayWord(selectedWord);
     console.log('Setting up the game interface...');
+}
+
+function displayWord(selectedWord) {
+    const wordContainer = document.getElementById('word');
+
+    if (wordContainer) {
+        const wordArray = selectedWord.split('');
+        const wordDashes = wordArray.map(letter => (letter === ' ' ? ' ' : '_')).join(' ');
+
+        wordContainer.textContent = wordDashes;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
