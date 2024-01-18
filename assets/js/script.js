@@ -24,7 +24,6 @@ function getRandomWord(category) {
         vegetables: ['CARROT', 'BROCCOLI', 'TOMATO', 'CUCUMBER', 'SPINACH'],
         numbers: ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'],
         weather: ['SUNNY', 'RAINY', 'CLOUDY', 'WINDY', 'SNOWY'],
-        transportation: ['CAR', 'BUS', 'TRAIN', 'BOAT', 'AIRPLANE'],
     };
 
     if (category && wordsByCategory.hasOwnProperty(category)) {
