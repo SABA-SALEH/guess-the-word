@@ -8,6 +8,7 @@ function startGuessGame(category) {
     const selectedWord = getRandomWord(category);
     const hint = getHintForWord(category, selectedWord);
 
+    localStorage.setItem('category', category);
     localStorage.setItem('selectedWord', selectedWord);
     localStorage.setItem('hint', hint);
 
@@ -24,23 +25,30 @@ function getRandomWord(category) {
         numbers: ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'],
         weather: ['SUNNY', 'RAINY', 'CLOUDY', 'WINDY', 'SNOWY'],
         transportation: ['CAR', 'BUS', 'TRAIN', 'BOAT', 'AIRPLANE'],
-       
     };
 
     if (category && wordsByCategory.hasOwnProperty(category)) {
         const words = wordsByCategory[category];
 
         if (words && words.length > 0) {
-            const randomIndex = Math.floor(Math.random() * words.length);
-            return words[randomIndex];
+            let wordIndex = parseInt(localStorage.getItem(`${category}_wordIndex`) || 0);
+        
+            if (wordIndex < words.length) {
+
+                const selectedWord = words[wordIndex];
+                localStorage.setItem(`${category}_wordIndex`, wordIndex + 1);
+        
+                return selectedWord;
+            } else {
+                console.log('No more words in the category.');
+                return null;
+            }
         } else {
             console.error('Category has no words.');
         }
-    } else {
-        console.error('Invalid category specified.');
-    }
 
     return null;
+}
 }
 
 function getHintForWord(category, word) {

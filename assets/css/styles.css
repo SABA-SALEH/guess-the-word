@@ -160,5 +160,39 @@ body {
     background: url('/assets/images/background.jpg') center/cover no-repeat; 
 }
 
+.title-container h1 {
+    animation: bounce 1.5s infinite;
+    font-family: 'Erica One', sans-serif; 
+    color: #db344d;
+}
+.hint-container {
+    background-color: #f39c12;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.hint-container h2 {
+    color: #fff;
+    font-size: 30px;
+}
+
+.word-container2 {
+    background-color: #3498db;;
+    padding: 5px 10px; 
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px; 
+}
+
+
+.word-container2 p {
+    color: #fff;
+    font-size: 30px;
+    white-space: pre-wrap; 
+    letter-spacing: 10px; 
+}
+
 
 
