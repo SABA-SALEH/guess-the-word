@@ -27,7 +27,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .letter-circle {
@@ -62,17 +62,41 @@ body {
     border-radius: 25px;
     text-align: center;
     box-shadow: 0 0 20px rgb(7, 187, 237);
-    width: 70%;
-    margin-top: 20px;
+    width: 75%;
+    margin-top: 10px;
+    position: relative;
+}
+
+.how-to-play-container {
+    text-align: left;
+    margin-top: 10px;
+    padding: 20px; 
+    background-color: rgba(231, 174, 16, 0.1); 
+    border-radius: 25px; 
+}
+.how-to-play-container h1 {
+    color: #db344d;
+}
+
+.how-to-play-container p {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.how-to-play-container p i {
+    margin-right: 10px; 
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #db344d;
 }
 
 
 .play-button {
-    margin-top: 40px;
-    padding: 0.5em 0.5em; 
+    margin-top: 20px;
+    padding: 0.2em 0.2em; 
     font-size: 2em;
     border: none;
-    width: 40%; 
+    width: 20%; 
     font-family: 'Lilita One', sans-serif;
     border-radius: 25px;
 }
@@ -99,9 +123,14 @@ body {
     .letter-circle {
         width: 2em;
         height: 2em; 
-        font-size: 1em; 
+        font-size: 1.1em; 
     }
-
+    .how-to-play-container h1 {
+        font-size: 1.3em;
+    }
+    .how-to-play-container p {
+        font-size: 1em;
+    }
     .play-button {
         width: 40%; 
         margin-top: 20px;
@@ -147,6 +176,9 @@ body {
 @media (max-width: 576px) {
     .category-button {
         font-size: 1em;
+        width: 45%; 
+        margin: 0 1%;
+            margin-bottom: 10px; 
     }
 }
 /* guess-game --------------------------------------------------------*/
