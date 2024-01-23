@@ -249,6 +249,9 @@ body {
     background-color: #ef27b3;
 }
 
-
+#game-board button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
 
 

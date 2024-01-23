@@ -154,12 +154,23 @@ function setupGameBoard() {
             const letterButton = document.createElement('button');
             letterButton.textContent = letter;
             letterButton.addEventListener('click', () => {
-                sound(); 
                 handleLetterClick(letter);
             });
             gameBoardContainer.appendChild(letterButton);
         });
     }
+}
+
+
+function handleLetterClick(selectedLetter) {
+    const gameBoardButtons = document.querySelectorAll('#game-board button');
+
+    gameBoardButtons.forEach(button => {
+        if (button.textContent === selectedLetter) {
+            button.disabled = true;
+            button.classList.add('disabled');
+        }
+    });
 }
 
 
