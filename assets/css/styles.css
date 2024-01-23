@@ -226,5 +226,29 @@ body {
     letter-spacing: 10px; 
 }
 
+#game-board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; 
+}
+
+#game-board button {
+    margin: 5px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#game-board button:hover {
+    background-color: #ef27b3;
+}
+
+
 
 

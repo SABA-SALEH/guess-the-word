@@ -114,7 +114,6 @@ function initializeGuessGame() {
     const hint = localStorage.getItem('hint');
 
     displayHint(hint);
-    setupLives();
     setupUI(selectedWord);
 }
 
@@ -127,13 +126,11 @@ function displayHint(hint) {
     }
 }
 
-function setupLives() {
-    console.log('Setting up initial lives...');
-}
 
 function setupUI(selectedWord) {
     displayWord(selectedWord);
     console.log('Setting up the game interface...');
+    setupGameBoard();
 }
 
 function displayWord(selectedWord) {
@@ -146,5 +143,24 @@ function displayWord(selectedWord) {
         wordContainer.textContent = wordDashes;
     }
 }
+
+function setupGameBoard() {
+    const gameBoardContainer = document.getElementById('game-board');
+    if (gameBoardContainer) {
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const alphabetArray = alphabet.split('');
+
+        alphabetArray.forEach(letter => {
+            const letterButton = document.createElement('button');
+            letterButton.textContent = letter;
+            letterButton.addEventListener('click', () => {
+                sound(); 
+                handleLetterClick(letter);
+            });
+            gameBoardContainer.appendChild(letterButton);
+        });
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
