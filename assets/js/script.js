@@ -3,7 +3,6 @@ function redirectToHomePage() {
     window.location.href = 'home.html';
 }
 
-
 function startGuessGame(category) {
     const selectedWord = getRandomWord(category);
     const hint = getHintForWord(category, selectedWord);
@@ -14,7 +13,6 @@ function startGuessGame(category) {
 
     window.location.href = 'guess-game.html';
 }
-
 
 function getRandomWord(category) {
     const wordsByCategory = {
@@ -108,7 +106,6 @@ function getHintForWord(category, word) {
     return hintsByCategory[category][word] || 'No hint available';
 }
 
-
 function initializeGuessGame() {
     const selectedWord = localStorage.getItem('selectedWord');
     const hint = localStorage.getItem('hint');
@@ -117,7 +114,6 @@ function initializeGuessGame() {
     setupUI(selectedWord);
 }
 
-
 function displayHint(hint) {
    
     const hintElement = document.getElementById('hint-text');
@@ -125,7 +121,6 @@ function displayHint(hint) {
         hintElement.textContent = hint;
     }
 }
-
 
 function setupUI(selectedWord) {
     displayWord(selectedWord);
@@ -161,7 +156,6 @@ function setupGameBoard() {
     }
 }
 
-
 function handleLetterClick(selectedLetter) {
     const gameBoardButtons = document.querySelectorAll('#game-board button');
 
@@ -171,6 +165,27 @@ function handleLetterClick(selectedLetter) {
             button.classList.add('disabled');
         }
     });
+    const selectedWord = localStorage.getItem('selectedWord');
+    updateWordDisplay(selectedWord, selectedLetter);
+}
+
+function updateWordDisplay(selectedWord, selectedLetter) {
+    const wordContainer = document.getElementById('word');
+    if (wordContainer) {
+        const wordArray = selectedWord.split('');
+        let updatedWord = wordContainer.textContent.split(' ');
+
+        let isLetterCorrect = false;
+
+        for (let i = 0; i < wordArray.length; i++) {
+            if (wordArray[i] === selectedLetter) {
+                updatedWord[i] = selectedLetter;
+                isLetterCorrect = true;
+            }
+        }
+        const displayWord = updatedWord.join(' ');
+        wordContainer.textContent = displayWord;
+    }
 }
 
 
