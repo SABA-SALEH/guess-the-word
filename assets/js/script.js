@@ -196,6 +196,16 @@ function updateWordDisplay(selectedWord, selectedLetter) {
                 showConfirmButton: false 
             });
         }
+
+        if (!isLetterCorrect) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Incorrect letter!',
+                text: 'Please try again.',
+                timer: 3000, 
+                showConfirmButton: false 
+            });
+        }
     }
  
 }
