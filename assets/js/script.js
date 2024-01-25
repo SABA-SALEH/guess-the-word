@@ -185,8 +185,21 @@ function updateWordDisplay(selectedWord, selectedLetter) {
         }
         const displayWord = updatedWord.join(' ');
         wordContainer.textContent = displayWord;
+
+        if (!displayWord.includes('_')) {
+            //https://sweetalert2.github.io/
+            Swal.fire({
+                icon: 'success',
+                title: 'Good job!',
+                text: 'You guessed the word!',
+                timer: 3000, 
+                showConfirmButton: false 
+            });
+        }
     }
+ 
 }
+
 
 
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
