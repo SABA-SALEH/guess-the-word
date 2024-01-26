@@ -254,4 +254,16 @@ body {
     cursor: not-allowed;
 }
 
+#chances-text {
+    position: absolute;
+    left: 20px; 
+    top: 20px; 
+    color: #000000; 
+    font-size: 35px;
+}
 
+.custom-heart {
+    color: #de2d2d; 
+    font-size: 35px; 
+    margin-right: 5px; 
+}

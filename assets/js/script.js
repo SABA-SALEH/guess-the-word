@@ -1,3 +1,6 @@
+let chancesRemaining;
+const initialChances = 3;
+
 function redirectToHomePage() {
     
     window.location.href = 'home.html';
@@ -10,6 +13,9 @@ function startGuessGame(category) {
     localStorage.setItem('category', category);
     localStorage.setItem('selectedWord', selectedWord);
     localStorage.setItem('hint', hint);
+    localStorage.setItem('chancesRemaining', initialChances);
+
+    chancesRemaining = initialChances;
 
     window.location.href = 'guess-game.html';
 }
@@ -109,9 +115,12 @@ function getHintForWord(category, word) {
 function initializeGuessGame() {
     const selectedWord = localStorage.getItem('selectedWord');
     const hint = localStorage.getItem('hint');
+    chancesRemaining = parseInt(localStorage.getItem('chancesRemaining')) || 3;
+
 
     displayHint(hint);
     setupUI(selectedWord);
+    displayChances(); 
 }
 
 function displayHint(hint) {
@@ -126,6 +135,7 @@ function setupUI(selectedWord) {
     displayWord(selectedWord);
     console.log('Setting up the game interface...');
     setupGameBoard();
+    displayChances();
 }
 
 function displayWord(selectedWord) {
@@ -198,6 +208,7 @@ function updateWordDisplay(selectedWord, selectedLetter) {
         }
 
         if (!isLetterCorrect) {
+             //https://sweetalert2.github.io/
             Swal.fire({
                 icon: 'warning',
                 title: 'Incorrect letter!',
@@ -205,11 +216,19 @@ function updateWordDisplay(selectedWord, selectedLetter) {
                 timer: 3000, 
                 showConfirmButton: false 
             });
+            chancesRemaining--;
+            displayChances();
         }
     }
  
 }
 
+function displayChances() {
+    const chancesElement = document.getElementById('chances-text');
+    if (chancesElement) {
+        chancesElement.innerHTML = `<i class="fa-solid fa-heart custom-heart"></i> ${chancesRemaining}`;
+    }
+}
 
 
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
