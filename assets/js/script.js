@@ -218,6 +218,21 @@ function updateWordDisplay(selectedWord, selectedLetter) {
             });
             chancesRemaining--;
             displayChances();
+
+            if (chancesRemaining === 0) {
+                
+                const secretWord = localStorage.getItem('selectedWord');
+            //https://sweetalert2.github.io/
+                Swal.fire({
+                    icon: 'error',
+                    title: 'You Lose!',
+                    text: `You ran out of chances. The word was: ${secretWord}`,
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                   
+                   window.location.href = 'index.html';
+                });
+            }
         }
     }
  
