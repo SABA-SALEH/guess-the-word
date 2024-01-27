@@ -39,22 +39,22 @@ body {
     font-size: 2em; 
     margin: 5px;
     border-radius: 25px; 
-    color: #fff;
+    color: #000000;
     animation: bounce 1.5s infinite;
 }
 
-.G { background-color: #3498db; }
-.U { background-color: #27ae60; }
-.E { background-color: #e74c3c; }
-.S { background-color: #f39c12; }
+.G { background-color: #9336fd; }
+.U { background-color: #d883ff; }
+.E { background-color: #f050ae; }
+.S { background-color: #f77976; }
 
-.T { background-color: #db3469; }
-.H { background-color: #5b27ae; }
+.T { background-color: #ffab00; }
+.H { background-color: #fdf148; }
 
-.W { background-color: #9b59b6; }
-.O { background-color: #34495e; }
-.R { background-color: #e622ab; }
-.D { background-color: #2ecc71; }
+.W { background-color: #a0e426; }
+.O { background-color: #52e3e1; }
+.R { background-color: #33a8c7; }
+.D { background-color: #9336fd; }
 
 .card {
     background-color: rgb(255, 255, 255);
@@ -99,10 +99,13 @@ body {
     width: 20%; 
     font-family: 'Lilita One', sans-serif;
     border-radius: 25px;
+    background-color: #f77976;
+    color: #000000;
 }
 
 .play-button:hover {
-    background-color: #e7ae10;
+    background-color: #ffab00;
+    color: #000000;
 }
 
 
@@ -165,12 +168,42 @@ body {
     font-family: 'Lilita One', sans-serif;
 }
 
-.colors { background-color: #3498dbcf; }
-.shapes { background-color: #27ae5fca; }
-.fruits { background-color: #e74d3cba; }
-.vegetables { background-color: #f39d12bd; }
-.numbers { background-color: #db3469c7; }
-.weather { background-color: #5b27aebc; }
+.colors { background-color: #d883ff; }
+.shapes { background-color: #f050ae; }
+.fruits { background-color: #f77976;}
+.vegetables { background-color: #ffab00; }
+.numbers { background-color: #a0e426; }
+.weather { background-color: #33a8c7; }
+
+
+.category-button i {
+    margin-right: 5px; 
+    font-size: 1.8em;
+}
+
+.colors i {
+    color: #ffc43d; 
+}
+
+.shapes i {
+    color: #a0e426;
+}
+
+.fruits i {
+    color: #e31212; 
+}
+
+.vegetables i {
+    color: #ff5714; 
+}
+
+.numbers i {
+    color: #33a8c7; 
+}
+
+.weather i {
+    color: #FFD700; 
+}
 
 
 @media (max-width: 576px) {
@@ -178,7 +211,7 @@ body {
         font-size: 1em;
         width: 45%; 
         margin: 0 1%;
-            margin-bottom: 10px; 
+        margin-bottom: 10px; 
     }
 }
 /* guess-game --------------------------------------------------------*/
@@ -198,7 +231,7 @@ body {
     color: #db344d;
 }
 .hint-container {
-    background-color: #f39c12;
+    background-color: #f050ae;
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -206,12 +239,12 @@ body {
 }
 
 .hint-container h2 {
-    color: #fff;
+    color: #000000;
     font-size: 30px;
 }
 
 .word-container2 {
-    background-color: #3498db;;
+    background-color: #f77976;
     padding: 5px 10px; 
     border-radius: 10px;
     text-align: center;
@@ -220,7 +253,7 @@ body {
 
 
 .word-container2 p {
-    color: #fff;
+    color: #000000;
     font-size: 30px;
     white-space: pre-wrap; 
     letter-spacing: 10px; 
@@ -235,8 +268,8 @@ body {
 
 #game-board button {
     margin: 5px;
-    background-color: #3498db;
-    color: #fff;
+    background-color: #ffab00;
+    color: #000000;
     font-size: 15px;
     padding: 10px 15px;
     border: none;
@@ -246,7 +279,7 @@ body {
 }
 
 #game-board button:hover {
-    background-color: #ef27b3;
+    background-color: #fdf148;
 }
 
 #game-board button.disabled {
@@ -266,4 +299,61 @@ body {
     color: #de2d2d; 
     font-size: 35px; 
     margin-right: 5px; 
+}
+
+#next-word-button,
+#change-category-button {
+    margin: 5px;
+    background-color:#33a8c7;
+    color: #000000;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#next-word-button:hover,
+#change-category-button:hover {
+    background-color: #52e3e1;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+    .hint-container h2,
+    .hint-container span,
+    .word-container2 p {
+        font-size: 1em;
+    }
+
+    .title-container h1 { font-size: 1.5em; margin: 20px;}
+
+
+    #game-board {
+        flex-wrap: wrap; 
+        align-content: flex-start;
+        gap: 2px;
+    }
+
+    #game-board button {
+        width: auto;
+        font-size: 1em;
+        padding: 8px 12px;
+    }
+
+    #next-word-button,
+#change-category-button {
+    font-size: 1em;
+    width:45%;
+    padding: 5px;
+}
+
+.custom-heart { 
+    font-size: 1.2em; 
+}
+
+#chances-text {
+    font-size: 1.2em;
+}
 }
