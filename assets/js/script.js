@@ -2,8 +2,16 @@ let chancesRemaining;
 const initialChances = 3;
 
 function redirectToHomePage() {
-    
+    const currentCategory = localStorage.getItem('category');
+    localStorage.setItem(`${currentCategory}_wordIndex`, 0);
     window.location.href = 'home.html';
+}
+
+
+function redirectToWelcomePage() {
+    const currentCategory = localStorage.getItem('category');
+    localStorage.setItem(`${currentCategory}_wordIndex`, 0);
+    window.location.href = 'index.html';
 }
 
 function startGuessGame(category) {
@@ -245,5 +253,17 @@ function displayChances() {
     }
 }
 
+const changeButton = document.getElementById('change-category-button');
+    if (changeButton) {
+        changeButton.addEventListener('click', function () {
+            redirectToHomePage();
+        });
+    }
 
+    const backToWelcomeButton = document.getElementById('back-to-welcome-button');
+    if (backToWelcomeButton) {
+        backToWelcomeButton.addEventListener('click', function () {
+            redirectToWelcomePage();
+        });
+    }
 document.addEventListener('DOMContentLoaded', initializeGuessGame);

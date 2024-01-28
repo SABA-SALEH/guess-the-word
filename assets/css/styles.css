@@ -71,7 +71,7 @@ body {
     text-align: left;
     margin-top: 10px;
     padding: 20px; 
-    background-color: rgba(231, 174, 16, 0.1); 
+    background-color: #fbf8cc; 
     border-radius: 25px; 
 }
 .how-to-play-container h1 {
@@ -205,6 +205,22 @@ body {
     color: #FFD700; 
 }
 
+.welcome-button {
+    margin: 15px;
+    padding: 10px;
+    width: 40%;
+    font-size: 1.5em;
+    border-radius: 15px;
+    font-family: 'Lilita One', sans-serif;
+    background-color: #fdf148;
+    
+}
+
+.welcome-button i {
+    color: #33a8c7; 
+    margin-right: 10px; 
+    font-size: 1.5em;
+}
 
 @media (max-width: 576px) {
     .category-button {
@@ -212,6 +228,11 @@ body {
         width: 45%; 
         margin: 0 1%;
         margin-bottom: 10px; 
+    }
+
+    .welcome-button {
+        width: 80%;
+        font-size: 1em;
     }
 }
 /* guess-game --------------------------------------------------------*/
@@ -301,6 +322,15 @@ body {
     margin-right: 5px; 
 }
 
+.home {
+    position: absolute;
+    right: 20px; 
+    top: 20px; 
+    color: #0a0a0a; 
+    font-size: 35px;
+    cursor: pointer;
+}
+
 #next-word-button,
 #change-category-button {
     margin: 5px;
@@ -349,7 +379,7 @@ body {
     padding: 5px;
 }
 
-.custom-heart { 
+.custom-heart , .home { 
     font-size: 1.2em; 
 }
 
