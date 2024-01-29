@@ -208,9 +208,9 @@ function updateWordDisplay(selectedWord, selectedLetter) {
             //https://sweetalert2.github.io/
             Swal.fire({
                 icon: 'success',
-                title: 'Good job!',
-                text: 'You guessed the word!',
-                timer: 3000, 
+                title: 'Fantastic!',
+                text: 'You did it! You guessed the word! Great job, little word detective!',
+                timer: 6000, 
                 showConfirmButton: false 
             });
         }
@@ -219,9 +219,9 @@ function updateWordDisplay(selectedWord, selectedLetter) {
              //https://sweetalert2.github.io/
             Swal.fire({
                 icon: 'warning',
-                title: 'Incorrect letter!',
-                text: 'Please try again.',
-                timer: 3000, 
+                title: 'Oops, Not Quite Right!',
+                text: 'That letter doesn’t fit, but no worries! Try another one. You’re doing great!',
+                timer: 6000, 
                 showConfirmButton: false 
             });
             chancesRemaining--;
@@ -233,8 +233,8 @@ function updateWordDisplay(selectedWord, selectedLetter) {
             //https://sweetalert2.github.io/
                 Swal.fire({
                     icon: 'error',
-                    title: 'You Lose!',
-                    text: `You ran out of chances. The word was: ${secretWord}`,
+                    title: 'Oops, You Lose!',
+                    text: `Don't worry, you'll get it next time! The word was: ${secretWord}. Keep trying and have fun!`,
                     confirmButtonText: 'OK'
                 }).then(() => {
                    

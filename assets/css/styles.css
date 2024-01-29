@@ -62,7 +62,7 @@ body {
     border-radius: 25px;
     text-align: center;
     box-shadow: 0 0 20px rgb(7, 187, 237);
-    width: 75%;
+    width: 85%;
     margin-top: 10px;
     position: relative;
 }
@@ -70,17 +70,21 @@ body {
 .how-to-play-container {
     text-align: left;
     margin-top: 10px;
-    padding: 20px; 
+    padding: 10px; 
     background-color: #fbf8cc; 
     border-radius: 25px; 
 }
-.how-to-play-container h1 {
-    color: #db344d;
-}
+
 
 .how-to-play-container p {
     margin-bottom: 10px;
     position: relative;
+}
+
+.super-fun-message {
+    color: #db344d;
+    font-size: 1.5em;
+    text-align: center;
 }
 
 .how-to-play-container p i {
