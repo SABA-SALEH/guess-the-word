@@ -205,15 +205,21 @@ function updateWordDisplay(selectedWord, selectedLetter) {
         wordContainer.textContent = displayWord;
 
         if (!displayWord.includes('_')) {
-            //https://sweetalert2.github.io/
+           
+            const gameBoardButtons = document.querySelectorAll('#game-board button');
+            gameBoardButtons.forEach(button => {
+                button.disabled = true;
+            });
+        
             Swal.fire({
                 icon: 'success',
                 title: 'Fantastic!',
                 text: 'You did it! You guessed the word! Great job, little word detective!',
-                timer: 6000, 
-                showConfirmButton: false 
+                timer: 6000,
+                showConfirmButton: false
             });
         }
+        
 
         if (!isLetterCorrect) {
              //https://sweetalert2.github.io/
