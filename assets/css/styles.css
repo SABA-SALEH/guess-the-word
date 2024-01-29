@@ -326,13 +326,18 @@ body {
     margin-right: 5px; 
 }
 
-.home {
+.btn-danger {
     position: absolute;
     right: 20px; 
     top: 20px; 
-    color: #0a0a0a; 
-    font-size: 35px;
+    font-size: 20px;
+    width: fit-content;
     cursor: pointer;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #050505;
 }
 
 #next-word-button,

@@ -1,10 +1,10 @@
 let chancesRemaining;
 const initialChances = 3;
 
-function redirectToHomePage() {
+function redirectToCategoryPage() {
     const currentCategory = localStorage.getItem('category');
     localStorage.setItem(`${currentCategory}_wordIndex`, 0);
-    window.location.href = 'home.html';
+    window.location.href = 'category.html';
 }
 
 
@@ -15,7 +15,7 @@ function redirectToWelcomePage() {
 }
 
 function startGuessGame(category) {
-    const selectedWord = getRandomWord(category);
+    const selectedWord = getWord(category);
     const hint = getHintForWord(category, selectedWord);
 
     localStorage.setItem('category', category);
@@ -24,11 +24,13 @@ function startGuessGame(category) {
     localStorage.setItem('chancesRemaining', initialChances);
 
     chancesRemaining = initialChances;
+    
+    
 
     window.location.href = 'guess-game.html';
 }
 
-function getRandomWord(category) {
+function getWord(category) {
     const wordsByCategory = {
         colors: ['RED', 'BLUE', 'YELLOW', 'GREEN', 'PINK'],
         shapes: ['CIRCLE', 'SQUARE', 'TRIANGLE', 'STAR', 'HEART'],
@@ -210,7 +212,8 @@ function updateWordDisplay(selectedWord, selectedLetter) {
             gameBoardButtons.forEach(button => {
                 button.disabled = true;
             });
-        
+           
+            //https://sweetalert2.github.io/
             Swal.fire({
                 icon: 'success',
                 title: 'Fantastic!',
@@ -262,7 +265,7 @@ function displayChances() {
 const changeButton = document.getElementById('change-category-button');
     if (changeButton) {
         changeButton.addEventListener('click', function () {
-            redirectToHomePage();
+            redirectToCategoryPage();
         });
     }
 
@@ -272,4 +275,6 @@ const changeButton = document.getElementById('change-category-button');
             redirectToWelcomePage();
         });
     }
+      
+
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
