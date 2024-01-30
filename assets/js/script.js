@@ -1,12 +1,12 @@
 let chancesRemaining;
 const initialChances = 3;
+let  nextWordButton = document.getElementById('next-word-button');
 
 function redirectToCategoryPage() {
     const currentCategory = localStorage.getItem('category');
     localStorage.setItem(`${currentCategory}_wordIndex`, 0);
     window.location.href = 'category.html';
 }
-
 
 function redirectToWelcomePage() {
     const currentCategory = localStorage.getItem('category');
@@ -24,9 +24,6 @@ function startGuessGame(category) {
     localStorage.setItem('chancesRemaining', initialChances);
 
     chancesRemaining = initialChances;
-    
-    
-
     window.location.href = 'guess-game.html';
 }
 
@@ -126,7 +123,10 @@ function initializeGuessGame() {
     const selectedWord = localStorage.getItem('selectedWord');
     const hint = localStorage.getItem('hint');
     chancesRemaining = parseInt(localStorage.getItem('chancesRemaining')) || 3;
-
+    
+    if (nextWordButton) {
+        nextWordButton.disabled = true;
+    }
 
     displayHint(hint);
     setupUI(selectedWord);
@@ -212,12 +212,16 @@ function updateWordDisplay(selectedWord, selectedLetter) {
             gameBoardButtons.forEach(button => {
                 button.disabled = true;
             });
+
+            if (nextWordButton) {
+                nextWordButton.disabled = false;
+            }
            
             //https://sweetalert2.github.io/
             Swal.fire({
                 icon: 'success',
                 title: 'Fantastic!',
-                text: 'You did it! You guessed the word! Great job, little word detective!',
+                text: 'You did it! You guessed the word! Great job, little word detective! Move on to the next word and let the adventure continue!',
                 timer: 6000,
                 showConfirmButton: false
             });
@@ -292,8 +296,7 @@ const changeButton = document.getElementById('change-category-button');
             return wordIndex < wordsByCategory[category].length;
         }
     }
-    
-    const nextWordButton = document.getElementById('next-word-button');
+
     if (nextWordButton) {
         nextWordButton.addEventListener('click', function () {
             const currentCategory = localStorage.getItem('category');
@@ -303,7 +306,7 @@ const changeButton = document.getElementById('change-category-button');
             } else {
                 //https://sweetalert2.github.io/
                 Swal.fire({
-                    icon: 'info',
+                    icon: 'success',
                     title: 'Wow,No More Words',
                     text: `Fantastic job! You've guessed all the words in ${currentCategory} category. Explore another category for more exciting challenges!`,
                     confirmButtonText: 'OK',
@@ -313,6 +316,5 @@ const changeButton = document.getElementById('change-category-button');
     }
 
    
-    
-
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
+

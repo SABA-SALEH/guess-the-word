@@ -17,6 +17,8 @@ Embark on a delightful journey of learning and fun with our interactive word-gue
 
 - **Victory or Defeat:** Successfully guess all the letters before running out of chances, and you'll be greeted with a cheerful "You Win!" message. If challenges arise, face them with grace, and the game will acknowledge your efforts with a comforting "You Lose!" message.
 
+- **Next Word Challenge:** Move on to the next word in the same category only after you've successfully guessed the current one. It adds more excitement and challenge, making you solve each mystery before unlocking the next fun puzzle!
+
 Get ready for a super fun learning adventure, where every guess brings you closer to victory in the magical world of words! 🌈🔍🚀
 
 ## Benefits
@@ -68,7 +70,7 @@ The primary objective of this project is to provide an engaging and intuitive us
 
 6. **Category Change:** Enable users to change the category at any time, providing flexibility and variety in gameplay.
 
-7. **Next Word:** Allow users to move to the next word within the same category whenever they wish, keeping the game dynamic and engaging.
+7. **Next Word Challenge:** Move to the next word in the same category only after successfully guessing the current one. This feature makes the game more exciting by asking players to improve their word detective skills. Conquer each mystery before unlocking the next fun puzzle, adding extra excitement and challenge to the game.
 
 
 ### Future Features:
