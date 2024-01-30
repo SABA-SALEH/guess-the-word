@@ -131,8 +131,53 @@ The information in the game is organized to create a smooth and logical flow for
 
 ## How to Use the Project
 
-
 ## Deployment
+
+This Guess the Word - Kids Edition Game project was developed using the Gitpod IDE, committed to Git, and pushed to GitHub.
+
+### Deploying to GitHub Pages
+
+To deploy this game to GitHub Pages from its GitHub repository, follow these steps:
+
+1. Log into GitHub.
+2. From the list of repositories on the screen, select `SABA-SALEH/guess-the-word`.
+3. From the menu items near the top of the page, select Settings.
+4. Scroll down to the GitHub Pages section.
+5. Under Source, click the drop-down menu labeled None and select the Branch you want to deploy (e.g., main or master).
+6. After selecting the Branch, the page is automatically refreshed, and the website is now deployed.
+7. Scroll back down to the GitHub Pages section to retrieve the link to the deployed website.
+
+**Note:** Ensure that the selected branch contains the latest version of your game.
+
+### How to Run This Project Locally
+
+#### Cloning the Project from GitHub to Gitpod
+
+To clone this project from GitHub to Gitpod:
+
+1. Open your Gitpod IDE.
+2. Create a new workspace or open an existing one.
+3. In the terminal, type `git clone https://github.com/SABA-SALEH/guess-the-word.git`.
+4. Press Enter. Your Gitpod workspace is now set up with the project code.
+
+#### Running Locally in Gitpod
+
+Once the project is cloned, navigate to the project directory.
+
+1. Open the ` index.html` file in the IDE.
+2. Right-click on the file and choose "Open Preview" to view the project locally in Gitpod.
+
+#### Running Locally in a Local IDE (Optional)
+
+To run this project in a local IDE like Visual Studio Code, PyCharm, etc.:
+
+1. Follow this link to the Project GitHub repository: [Guess The Word GitHub Repository](https://github.com/SABA-SALEH/guess-the-word).
+2. Under the repository name, click Code.
+3. In the "Clone with HTTPS" section, copy the clone URL for the repository.
+4. In your local IDE, open the terminal.
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied in Step 3.
+
 
 
 ## Testing
