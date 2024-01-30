@@ -276,5 +276,43 @@ const changeButton = document.getElementById('change-category-button');
         });
     }
       
+    function areMoreWordsAvailable(category) {
+        const wordsByCategory = {
+            colors: ['RED', 'BLUE', 'YELLOW', 'GREEN', 'PINK'],
+            shapes: ['CIRCLE', 'SQUARE', 'TRIANGLE', 'STAR', 'HEART'],
+            fruits: ['APPLE', 'BANANA', 'ORANGE', 'STRAWBERRY', 'WATERMELON'],
+            vegetables: ['CARROT', 'BROCCOLI', 'TOMATO', 'CUCUMBER', 'SPINACH'],
+            numbers: ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'],
+            weather: ['SUNNY', 'RAINY', 'CLOUDY', 'WINDY', 'SNOWY'],
+            transportation: ['CAR', 'BUS', 'TRAIN', 'BOAT', 'AIRPLANE'],
+        };
+    
+        if (wordsByCategory.hasOwnProperty(category)) {
+            const wordIndex = parseInt(localStorage.getItem(`${category}_wordIndex`) || 0);
+            return wordIndex < wordsByCategory[category].length;
+        }
+    }
+    
+    const nextWordButton = document.getElementById('next-word-button');
+    if (nextWordButton) {
+        nextWordButton.addEventListener('click', function () {
+            const currentCategory = localStorage.getItem('category');
+            
+            if (areMoreWordsAvailable(currentCategory)) {
+                startGuessGame(currentCategory);
+            } else {
+                //https://sweetalert2.github.io/
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Wow,No More Words',
+                    text: `Fantastic job! You've guessed all the words in ${currentCategory} category. Explore another category for more exciting challenges!`,
+                    confirmButtonText: 'OK',
+                });
+            }
+        });
+    }
+
+   
+    
 
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
