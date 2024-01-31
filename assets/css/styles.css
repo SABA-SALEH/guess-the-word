@@ -37,7 +37,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 2em; 
-    margin: 5px;
+    margin: 15px 5px 5px;
     border-radius: 15px; 
     color: #000000;
     animation: bounce 1.5s infinite;
@@ -163,7 +163,7 @@ body {
     font-family: 'Modak', system-ui;
     font-size: 3em;
     color: #FF5025;
-    margin: 20px;
+    margin-top:  20px;
 }
 
 .category-buttons {

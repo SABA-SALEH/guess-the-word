@@ -223,7 +223,7 @@ function updateWordDisplay(selectedWord, selectedLetter) {
                 icon: 'success',
                 title: 'Fantastic!',
                 text: 'You did it! You guessed the word! Great job, little word detective! Move on to the next word and let the adventure continue!',
-                timer: 6000,
+                timer: 5000,
                 showConfirmButton: false
             });
         }
@@ -235,7 +235,7 @@ function updateWordDisplay(selectedWord, selectedLetter) {
                 icon: 'warning',
                 title: 'Oops, Not Quite Right!',
                 text: 'That letter doesn’t fit, but no worries! Try another one. You’re doing great!',
-                timer: 6000, 
+                timer: 5000, 
                 showConfirmButton: false 
             });
             chancesRemaining--;
