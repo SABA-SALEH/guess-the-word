@@ -249,17 +249,31 @@ To run this project in a local IDE like Visual Studio Code, PyCharm, etc.:
 
 - **HTML Validator:**
   Validate HTML code to ensure it adheres to the defined standards and correct any markup errors.
+  ![Home page](/assets/documentation/screenshoots/HTML%20Validator%20index.png)
+  ![Category Page](/assets/documentation/screenshoots/HTML%20Validator%20category.png)
+  ![Guess the Word Page](/assets/documentation/screenshoots/)
 
 - **CSS Validator:**
   Use a CSS validator to check the stylesheets for compliance with CSS standards and identify and fix any issues.
+  The errors and warnings are originating from Bootstrap 5.
+  ![CSS Validator](/assets/documentation/screenshoots/CSS%20Validator.png)
 
 - **JS Validator:**
   Validate JavaScript code to catch errors, ensure syntax correctness, and maintain code quality.
+  ![JS Validator](/assets/documentation/screenshoots/JS%20Validator.png)
+
+- **Lighthouse Audit:** 
+  Chrome DevTools Lighthouse was employed to assess performance, best practices, accessibility, and SEO, resulting in optimizations.
+  ![Home page](/assets/documentation/screenshoots/lighthouseindex.png)
+  ![Category Page](/assets/documentation/screenshoots/lighthousecategory.png)
+  ![Guess the Word Page](/assets/documentation/screenshoots/lighthouseguess.png)
+
 
 #### Console Checking
 
 - **Console Logging:**
   Regularly check the browser console for any error messages, warnings, or informational logs during development and testing.
+  ![Console](/assets/documentation/screenshoots/console.png)
 
 ## Bugs and Fixes
 

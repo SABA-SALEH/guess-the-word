@@ -278,7 +278,7 @@ body {
     text-align: center;
 }
 
-.hint-container h2 {
+.hint-container span {
     color: #000000;
     font-size: 2em;
 }
