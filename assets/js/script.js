@@ -2,6 +2,7 @@ let chancesRemaining;
 const initialChances = 3;
 let  nextWordButton = document.getElementById('next-word-button');
 
+
 function redirectToCategoryPage() {
     const currentCategory = localStorage.getItem('category');
     localStorage.setItem(`${currentCategory}_wordIndex`, 0);
@@ -303,6 +304,7 @@ const changeButton = document.getElementById('change-category-button');
             
             if (areMoreWordsAvailable(currentCategory)) {
                 startGuessGame(currentCategory);
+                
             } else {
                 //https://sweetalert2.github.io/
                 Swal.fire({
@@ -311,10 +313,11 @@ const changeButton = document.getElementById('change-category-button');
                     text: `Fantastic job! You've guessed all the words in ${currentCategory} category. Explore another category for more exciting challenges!`,
                     confirmButtonText: 'OK',
                 });
+               
             }
         });
     }
 
-   
+
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
 

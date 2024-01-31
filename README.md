@@ -128,8 +128,38 @@ The information in the game is organized to create a smooth and logical flow for
 
 ## How to Install and Run the Project
 
+### Installation
 
-## How to Use the Project
+1. Clone the repository to your local machine:
+
+    ```bash
+    git clone https://github.com/SABA-SALEH/guess-the-word.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd guess-the-word
+    ```
+
+3. Install project dependencies:
+
+    ```bash
+    npm install
+    ```
+
+### Run the Game
+
+Execute the following command to start the game:
+
+```bash
+npm start
+ ```
+Open your web browser and go to http://localhost:8000 to play the Guess the Word - Kids Edition Game.
+
+
+
+   
 
 ## Deployment
 
@@ -179,9 +209,57 @@ To run this project in a local IDE like Visual Studio Code, PyCharm, etc.:
 6. Type `git clone`, and then paste the URL you copied in Step 3.
 
 
-
 ## Testing
 
+### Manual Testing
+
+#### Home Page:
+- Check if the "Play" button works and redirects to the category page.
+
+#### Category Page:
+- Test all category buttons to ensure they work correctly.
+- Verify that clicking on a category button redirects to the Guess the Word page with the chosen category.
+- Check if the "Back Home" button works correctly, redirecting to the home page.
+
+#### Guess the Word Page:
+-  Confirm that the game starts with the chosen category.
+-  Check if the word is displayed in dashes, and the related hint is shown correctly.
+-  Ensure the game board loads correctly.
+-  Test if the user can click correct buttons to guess letters in the word.
+-  Verify that a letter can only be clicked once.
+-  Check if the "Home" button works correctly, redirecting to the home page.
+- The game selects a word and displays the letters in the word as dashes.
+  - User interface includes a game board with all letters in the English alphabet.
+  - User guesses a letter by clicking on a letter in the game board.
+  - If the guessed letter is correct, update the dashes in the word.
+  - Once all letters are guessed, confirm that all letters are disabled, and the "Next Word" button is enabled.
+  - User wins if they guess all letters in the word, and a "You Win!" message is displayed.
+  - If the user selects an incorrect letter, display an alert and reduce chances.
+  - When the user runs out of chances, display the word and a "You Lose!" message.
+  - Move to the next word within the same category after successfully guessing the current one.
+  - Display an inspiring message when finishing all words in the category.
+  - Allow the user to change the category at any time.
+
+### Navigation
+-  Test navigation across different pages to ensure a smooth user experience.
+
+### Automated Testing
+
+#### Code Validation
+
+- **HTML Validator:**
+  Validate HTML code to ensure it adheres to the defined standards and correct any markup errors.
+
+- **CSS Validator:**
+  Use a CSS validator to check the stylesheets for compliance with CSS standards and identify and fix any issues.
+
+- **JS Validator:**
+  Validate JavaScript code to catch errors, ensure syntax correctness, and maintain code quality.
+
+#### Console Checking
+
+- **Console Logging:**
+  Regularly check the browser console for any error messages, warnings, or informational logs during development and testing.
 
 ## Bugs and Fixes
 
