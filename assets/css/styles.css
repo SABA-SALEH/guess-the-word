@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url('/assets/images/background.jpggit ') center/cover no-repeat; 
+    background: url('/assets/images/background.jpg') center/cover no-repeat; 
 }
 
 .word-container {
