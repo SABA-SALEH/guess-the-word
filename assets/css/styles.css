@@ -38,7 +38,7 @@ body {
     align-items: center;
     font-size: 2em; 
     margin: 15px 5px 5px;
-    border-radius: 15px; 
+    border-radius: 20px; 
     color: #000000;
     animation: bounce 1.5s infinite;
 }
@@ -97,12 +97,12 @@ body {
 
 .play-button {
     margin-top: 15px;
-    padding: 0.1em 0.1em; 
-    font-size: 1.8em;
+    padding: 0.2em 0.2em; 
+    font-size: 2em;
     border: none;
     width: 15%; 
     font-family: 'Lilita One', sans-serif;
-    border-radius: 15px;
+    border-radius: 20px;
     background-color: #f77976;
     color: #000000;
 }
@@ -354,6 +354,11 @@ body {
 
 .btn-danger:hover {
     background-color: #050505;
+}
+
+#toggleButton {
+    right: 70px; 
+    top: 20px; 
 }
 
 #next-word-button,

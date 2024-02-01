@@ -57,20 +57,36 @@ The primary objective of this project is to provide an engaging and intuitive us
 - As a user, I want a visually appealing and responsive interface to enhance my overall experience.
 
 ### Features:
+1. **How to Play Guide:** Enhance the user experience by incorporating a detailed "How to Play" guide directly on the home page. This feature provides users with step-by-step instructions, ensuring they understand the gameplay and making it easy for both new and experienced players to dive into the game.
+![How to Play Guide](assets/documentation/screenshoots/home.png)
 
-1. **Category Selection:** Allow users to choose from a variety of categories, including Colors, Shapes, Fruits, Vegetables, Numbers and  Weather.
+2. **Category Selection:** Allow users to choose from a variety of categories, including Colors, Shapes, Fruits, Vegetables, Numbers and  Weather.
+![Category Selection](assets/documentation/screenshoots/category.png)
 
-2. **Word Guessing:** Present users with hidden words for an interactive and challenging gaming experience.
+3. **Word Guessing:** Present users with hidden words for an interactive and challenging gaming experience.
+![Word Guessing:](assets/documentation/screenshoots/guesstheword.png)
+![Word Guessing:](assets/documentation/screenshoots/dashes.png)
 
-3. **Hints and Exploration:** Provide helpful hints to assist users in uncovering the words.
+4. **Hints and Exploration:** Provide helpful hints to assist users in uncovering the words.
+![Hints and Exploration](assets/documentation/screenshoots/ui.png)
 
-4. **Chances System:** Implement a system to track the number of attempts users have to guess the word.
+5. **Chances System:** Implement a system to track the number of attempts users have to guess the word.
+![Chances System](assets/documentation/screenshoots/chances.png)
 
-5. **SweetAlert Notifications:** Enhance the user experience with visually appealing pop-up notifications using SweetAlert for certain in-game events.
+6. **SweetAlert Notifications:** Enhance the user experience with visually appealing pop-up notifications using SweetAlert for certain in-game events.
+![SweetAlert](assets/documentation/screenshoots/alert.png)
+![SweetAlert](assets/documentation/screenshoots/alert1.png)
+![SweetAlert](assets/documentation/screenshoots/alert2.png)
+![SweetAlert](assets/documentation/screenshoots/alert3.png)
 
-6. **Category Change:** Enable users to change the category at any time, providing flexibility and variety in gameplay.
+7. **Category Change:** Enable users to change the category at any time, providing flexibility and variety in gameplay.
 
-7. **Next Word Challenge:** Move to the next word in the same category only after successfully guessing the current one. This feature makes the game more exciting by asking players to improve their word detective skills. Conquer each mystery before unlocking the next fun puzzle, adding extra excitement and challenge to the game.
+8. **Next Word Challenge:** Move to the next word in the same category only after successfully guessing the current one. This feature makes the game more exciting by asking players to improve their word detective skills. Conquer each mystery before unlocking the next fun puzzle, adding extra excitement and challenge to the game.
+![Next Word](assets/documentation/screenshoots/disablenextword.png)
+
+9.**Toggleable Background Music:** Empower users to play or pause the background music at any time with a simple toggle button, allowing them to control the auditory experience and enjoy a customizable gaming environment.
+![Toggleable Background Music](assets/documentation/screenshoots/music.png)
+
 
 
 ### Future Features:

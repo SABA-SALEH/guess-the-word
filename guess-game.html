@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script src="https://kit.fontawesome.com/45b8f34d90.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="assets/css/styles.css">
     <title>Guess Game</title>
 </head>
@@ -16,7 +18,18 @@
             <div class="background-image"></div>
             <div class="container card justify-content-center">
                 <div id="chances-text"></div>
-                <button  class="btn btn-danger" onclick="redirectToWelcomePage()"><i class="fas fa-home"></i></button>
+                <button type="button" class="btn btn-danger" onclick="redirectToWelcomePage()"><i class="fas fa-home"></i></button>
+
+
+                <button id="toggleButton" class="btn btn-danger" type="button" >
+                    <i id="playPauseIcon" class="fas fa-play"></i>
+                </button>
+                
+                <audio id="myAudio" loop>
+                    <source src="/assets/audio/backgroundmusic.mp3" type="audio/mp3">
+                    Your browser does not support the audio tag.
+                </audio>
+                <br>
                 <div class="title-container">
                     <h1>Guess The Word </h1>
                 </div>

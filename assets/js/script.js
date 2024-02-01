@@ -319,6 +319,21 @@ const changeButton = document.getElementById('change-category-button');
         });
     }
 
+    const audio = document.getElementById('myAudio');
+    const toggleButton = document.getElementById('toggleButton');
+    const playPauseIcon = document.getElementById('playPauseIcon');
 
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function () {
+            if (audio.paused) {
+                audio.play();
+                playPauseIcon.className = 'fas fa-pause'; 
+            } else {
+                audio.pause();
+                playPauseIcon.className = 'fas fa-play'; 
+            }
+        });
+    }
+    
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
 
