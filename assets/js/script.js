@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 let chancesRemaining;
 const initialChances = 3;
 let  nextWordButton = document.getElementById('next-word-button');

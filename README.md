@@ -251,7 +251,7 @@ To run this project in a local IDE like Visual Studio Code, PyCharm, etc.:
   Validate HTML code to ensure it adheres to the defined standards and correct any markup errors.
   ![Home page](/assets/documentation/screenshoots/HTML%20Validator%20index.png)
   ![Category Page](/assets/documentation/screenshoots/HTML%20Validator%20category.png)
-  ![Guess the Word Page](/assets/documentation/screenshoots/)
+  ![Guess the Word Page](/assets/documentation/screenshoots/HTML%20Validator%20guess.png)
 
 - **CSS Validator:**
   Use a CSS validator to check the stylesheets for compliance with CSS standards and identify and fix any issues.
@@ -275,9 +275,170 @@ To run this project in a local IDE like Visual Studio Code, PyCharm, etc.:
   Regularly check the browser console for any error messages, warnings, or informational logs during development and testing.
   ![Console](/assets/documentation/screenshoots/console.png)
 
+### Client Stories Testing
+
+**Client Story 1:**
+
+ - As a user, I want to enjoy an interactive and challenging game.
+    - Verify that the game interface is engaging and provides a challenging experience.
+    - Check if the game responds promptly to user interactions.
+    - Ensure that the game flow is intuitive and easy to understand.
+
+**Client Story 2:**
+
+ - As a user, I want to receive helpful hints to uncover hidden words.
+    - Confirm that hints are displayed for each word in the game.
+    - Test if hints are relevant and provide assistance in guessing the word.
+    - Ensure that hints are accessible and easy to view during the game.
+
+**Client Story 3:**
+
+ - As a user, I want the game to provide feedback on my performance.
+    - Check if the game provides feedback messages for correct and incorrect guesses.
+    - Verify that the feedback messages are clear and informative.
+    - Test if there is feedback on winning or losing the game.
+    - Confirm that the game communicates the remaining chances to the user.
+
+**Client Story 4:**
+
+ - As a user, I want the option to change the game category.
+    - Test the functionality to change the game category at any point.
+    - Confirm that changing the category resets the game appropriately.
+    - Ensure the user is informed about the category change.
+
+**Client Story 5:**
+
+ - As a user, I want a seamless transition between words in the same category.
+    - Test if moving to the next word within the same category works smoothly.
+    - Confirm that the game resets appropriately for the next word.
+    - Ensure the user experience is consistent across different words in the same category.
+
+**Client Story 6:**
+
+-  As a user, I want the ability to return to the home page easily.
+    -  Test the functionality of the "Home" button.
+    -  Verify that clicking the "Home" button redirects to the home page.
+    -  Confirm that the game state is reset when returning to the home page.
+
 ## Bugs and Fixes
+### Issue 1: Preserving Category Value
+**Bug:** When starting a new game or moving to the next word, the category value is not preserved.
 
+**Fix:** To address this issue, the `localStorage` is used to store and retrieve the current category. When starting a game or moving to the next word, the category is stored in `localStorage` and fetched when needed.
 
+``` javascript
+function redirectToCategoryPage() {
+    const currentCategory = localStorage.getItem('category');
+    localStorage.setItem(`${currentCategory}_wordIndex`, 0);
+    window.location.href = 'category.html';
+}
+```
+
+### Issue 2: Avoiding Word Repetition
+**Bug:** Words can be repeated when the user plays the game, leading to a less challenging experience.
+
+**Fix:** The code now keeps track of the word index for each category in `localStorage`. It ensures that a word is not repeated until all words in the category have been used. If there are no more words in the category, the user is notified, ensuring a diverse and engaging gameplay experience.
+
+```javascript
+function getWord(category) {
+    const wordsByCategory = {
+        // ... (Words for different categories remain unchanged)
+    };
+
+    if (category && wordsByCategory.hasOwnProperty(category)) {
+        const words = wordsByCategory[category];
+
+        if (words && words.length > 0) {
+            let wordIndex = parseInt(localStorage.getItem(`${category}_wordIndex`) || 0);
+
+            if (wordIndex < words.length) {
+                const selectedWord = words[wordIndex];
+                localStorage.setItem(`${category}_wordIndex`, wordIndex + 1);
+
+                return selectedWord;
+            } else {
+                console.log('No more words in the category.');
+                return null;
+            }
+        } else {
+            console.error('Category has no words.');
+        }
+    }
+
+    return null;
+}
+
+```
+### Issue 3: Improved Alert Display
+**Bug:** The alert messages were basic and needed improvement for a better user experience.
+
+**Fix:** The code now utilizes the SweetAlert2 library to display more visually appealing and informative alerts. Different icons and styles are used for success, warning, and error messages, providing a more engaging and user-friendly interface.
+
+```javascript
+Swal.fire({
+                    icon: 'error',
+                    title: 'Oops, You Lose!',
+                    text: `Don't worry, you'll get it next time! The word was: ${secretWord}. Keep trying and have fun!`,
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                   
+                   window.location.href = 'index.html';
+                });
+```
+
+### Issue 4: Replacing Dashes with Chosen Letters
+**Bug:** The challenge was to replace the dashes in the displayed word with the letters chosen by the user during the game.
+
+**Fix:** The code has been modified to dynamically replace the dashes in the displayed word with the correct letters chosen by the user. 
+
+```javascript
+function updateWordDisplay(selectedWord, selectedLetter) {
+    const wordContainer = document.getElementById('word');
+    if (wordContainer) {
+        const wordArray = selectedWord.split('');
+        let updatedWord = wordContainer.textContent.split(' ');
+
+        let isLetterCorrect = false;
+
+        for (let i = 0; i < wordArray.length; i++) {
+            if (wordArray[i] === selectedLetter) {
+                updatedWord[i] = selectedLetter;
+                isLetterCorrect = true;
+            }
+        }
+        const displayWord = updatedWord.join(' ');
+        wordContainer.textContent = displayWord;
+
+        // ... (Rest of the code)
+    }
+}
+
+```
+
+### Issue 5: Creating the Game Board
+**Bug:** The initial implementation lacked a dynamically created game board, affecting the overall interactivity of the game.
+
+**Fix:** The code now dynamically generates the game board, consisting of letter buttons representing the alphabet.
+
+```javascript
+function setupGameBoard() {
+    const gameBoardContainer = document.getElementById('game-board');
+    if (gameBoardContainer) {
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const alphabetArray = alphabet.split('');
+
+        alphabetArray.forEach(letter => {
+            const letterButton = document.createElement('button');
+            letterButton.textContent = letter;
+            letterButton.addEventListener('click', () => {
+                handleLetterClick(letter);
+            });
+            gameBoardContainer.appendChild(letterButton);
+        });
+    }
+}
+
+```
 ## Credits
 
 
