@@ -42,7 +42,10 @@ Kids have the freedom to explore various categories, promoting curiosity and a w
 "Guess the Word - Kids Edition" is not just a game; it's a playful educational experience that combines entertainment with learning. Join us on this exciting adventure where every guess brings your child one step closer to a world of knowledge and discovery! 🚀📚
 
 ## Screenshot
-
+![Screenshot](assets/documentation/screenshoots/screenshoot.png)
+![Screenshot](assets/documentation/screenshoots/screenshoot1.png)
+![Screenshot](assets/documentation/screenshoots/screenshoot2.png)
+![Screenshot](assets/documentation/screenshoots/screenshoot3.png)
 
 ## UX and UI
 ### Project and Customer Goals:
