@@ -1,21 +1,85 @@
 /* jshint esversion: 6 */
 let chancesRemaining;
 const initialChances = 3;
-let  nextWordButton = document.getElementById('next-word-button');
+const nextWordButton = document.getElementById('next-word-button');
+const changeButton = document.getElementById('change-category-button');
+const backToWelcomeButton = document.getElementById('back-to-welcome-button');
+const currentCategory = localStorage.getItem('category');
+const hintElement = document.getElementById('hint-text');
+const selectedWord = localStorage.getItem('selectedWord');
+const hint = localStorage.getItem('hint');
+const wordContainer = document.getElementById('word');
+const gameBoardContainer = document.getElementById('game-board');
+const gameBoardButtons = document.querySelectorAll('#game-board button');
+const chancesElement = document.getElementById('chances-text');
+const wordsByCategory = {
+    colors: ['RED', 'BLUE', 'YELLOW', 'GREEN', 'PINK'],
+    shapes: ['CIRCLE', 'SQUARE', 'TRIANGLE', 'STAR', 'HEART'],
+    fruits: ['APPLE', 'BANANA', 'ORANGE', 'STRAWBERRY', 'WATERMELON'],
+    vegetables: ['CARROT', 'BROCCOLI', 'TOMATO', 'CUCUMBER', 'SPINACH'],
+    numbers: ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'],
+    weather: ['SUNNY', 'RAINY', 'CLOUDY', 'WINDY', 'SNOWY'],
+};
+const hintsByCategory = {
+    colors: {
+        RED: 'Color of the apple fruit',
+        BLUE: 'Sky color',
+        YELLOW: 'Color of the sun',
+        GREEN: 'Color of grass',
+        PINK: 'Color of cherry blossoms',
+    },
+    shapes: {
+        CIRCLE: 'Round shape',
+        SQUARE: 'Four equal sides',
+        TRIANGLE: 'Three sides',
+        STAR: 'Shiny and bright in the sky',
+        HEART: 'Symbol of love',
+    },
+    fruits: {
+        APPLE: 'Common fruit in many varieties',
+        BANANA: 'Yellow, peelable fruit',
+        ORANGE: 'Citrus fruit with a tough peel',
+        STRAWBERRY: 'Small red, juicy fruit',
+        WATERMELON: 'Large, green fruit with red interior',
+    },
+    vegetables: {
+        CARROT: 'Orange root vegetable',
+        BROCCOLI: 'Green vegetable with compact clusters',
+        TOMATO: 'Red, juicy vegetable often mistaken for a fruit',
+        CUCUMBER: 'Long, green, and refreshing vegetable',
+        SPINACH: 'Leafy green vegetable rich in iron',
+    },
+    numbers: {
+        ONE: 'The loneliest number',
+        TWO: 'A pair or a couple',
+        THREE: 'The number of sides in a triangle',
+        FOUR: 'A square has this many sides',
+        FIVE: 'A high-five involves this many fingers',
+    },
+    weather: {
+        SUNNY: 'Clear sky with abundant sunlight',
+        RAINY: 'Wet weather with precipitation',
+        CLOUDY: 'Sky covered with clouds',
+        WINDY: 'Strong air movement',
+        SNOWY: 'Falling snowflakes covering the ground',
+    },
+};
 
+const audio = document.getElementById('myAudio');
+const toggleButton = document.getElementById('toggleButton');
+const playPauseIcon = document.getElementById('playPauseIcon');
 
+//Redirects the user to the category page while resetting the word index in local storage.
 function redirectToCategoryPage() {
-    const currentCategory = localStorage.getItem('category');
     localStorage.setItem(`${currentCategory}_wordIndex`, 0);
     window.location.href = 'category.html';
 }
-
+//Redirects the user to the welcome page while resetting the word index in local storage.
 function redirectToWelcomePage() {
-    const currentCategory = localStorage.getItem('category');
     localStorage.setItem(`${currentCategory}_wordIndex`, 0);
     window.location.href = 'index.html';
 }
-
+//Initiates the guessing game by setting up initial game data in local storage and redirecting to the game page.
 function startGuessGame(category) {
     const selectedWord = getWord(category);
     const hint = getHintForWord(category, selectedWord);
@@ -28,17 +92,8 @@ function startGuessGame(category) {
     chancesRemaining = initialChances;
     window.location.href = 'guess-game.html';
 }
-
+// Retrieves a word from the specified category, updating the word index in local storage.
 function getWord(category) {
-    const wordsByCategory = {
-        colors: ['RED', 'BLUE', 'YELLOW', 'GREEN', 'PINK'],
-        shapes: ['CIRCLE', 'SQUARE', 'TRIANGLE', 'STAR', 'HEART'],
-        fruits: ['APPLE', 'BANANA', 'ORANGE', 'STRAWBERRY', 'WATERMELON'],
-        vegetables: ['CARROT', 'BROCCOLI', 'TOMATO', 'CUCUMBER', 'SPINACH'],
-        numbers: ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'],
-        weather: ['SUNNY', 'RAINY', 'CLOUDY', 'WINDY', 'SNOWY'],
-    };
-
     if (category && wordsByCategory.hasOwnProperty(category)) {
         const words = wordsByCategory[category];
 
@@ -62,70 +117,21 @@ function getWord(category) {
     return null;
 }
 }
-
+//Retrieves a hint for the given word in the specified category.
 function getHintForWord(category, word) {
-    const hintsByCategory = {
-        colors: {
-            RED: 'Color of the apple fruit',
-            BLUE: 'Sky color',
-            YELLOW: 'Color of the sun',
-            GREEN: 'Color of grass',
-            PINK: 'Color of cherry blossoms',
-        },
-        shapes: {
-            CIRCLE: 'Round shape',
-            SQUARE: 'Four equal sides',
-            TRIANGLE: 'Three sides',
-            STAR: 'Shiny and bright in the sky',
-            HEART: 'Symbol of love',
-        },
-        fruits: {
-            APPLE: 'Common fruit in many varieties',
-            BANANA: 'Yellow, peelable fruit',
-            ORANGE: 'Citrus fruit with a tough peel',
-            STRAWBERRY: 'Small red, juicy fruit',
-            WATERMELON: 'Large, green fruit with red interior',
-        },
-        vegetables: {
-            CARROT: 'Orange root vegetable',
-            BROCCOLI: 'Green vegetable with compact clusters',
-            TOMATO: 'Red, juicy vegetable often mistaken for a fruit',
-            CUCUMBER: 'Long, green, and refreshing vegetable',
-            SPINACH: 'Leafy green vegetable rich in iron',
-        },
-        numbers: {
-            ONE: 'The loneliest number',
-            TWO: 'A pair or a couple',
-            THREE: 'The number of sides in a triangle',
-            FOUR: 'A square has this many sides',
-            FIVE: 'A high-five involves this many fingers',
-        },
-        weather: {
-            SUNNY: 'Clear sky with abundant sunlight',
-            RAINY: 'Wet weather with precipitation',
-            CLOUDY: 'Sky covered with clouds',
-            WINDY: 'Strong air movement',
-            SNOWY: 'Falling snowflakes covering the ground',
-        },
-        transportation: {
-            CAR: 'Personal motor vehicle',
-            BUS: 'Large public transport vehicle',
-            TRAIN: 'Railway transport',
-            BOAT: 'Watercraft for travel on water',
-            AIRPLANE: 'Aircraft for air travel',
-        },
-       
-    };
     
-
     return hintsByCategory[category][word] || 'No hint available';
 }
-
+//Displays the provided hint in the hint element on the game page.
+function displayHint(hint) {
+   
+    if (hintElement) {
+        hintElement.textContent = hint;
+    }
+}
+// Initializes the game by retrieving initial data from local storage and setting up the user interface.
 function initializeGuessGame() {
-    const selectedWord = localStorage.getItem('selectedWord');
-    const hint = localStorage.getItem('hint');
     chancesRemaining = parseInt(localStorage.getItem('chancesRemaining')) || 3;
-    
     if (nextWordButton) {
         nextWordButton.disabled = true;
     }
@@ -134,35 +140,25 @@ function initializeGuessGame() {
     setupUI(selectedWord);
     displayChances(); 
 }
-
-function displayHint(hint) {
-   
-    const hintElement = document.getElementById('hint-text');
-    if (hintElement) {
-        hintElement.textContent = hint;
-    }
-}
-
+//Sets up the game interface by displaying the selected word and initializing the game board.
 function setupUI(selectedWord) {
     displayWord(selectedWord);
     console.log('Setting up the game interface...');
     setupGameBoard();
     displayChances();
 }
-
+//Displays the selected word on the game page with dashes for each letter.
 function displayWord(selectedWord) {
-    const wordContainer = document.getElementById('word');
-
+    
     if (wordContainer) {
         const wordArray = selectedWord.split('');
-        const wordDashes = wordArray.map(letter => (letter === ' ' ? ' ' : '_')).join(' ');
+        const wordDashes = wordArray.map(letter => (letter === ' ' ? ' ' : '-')).join(' ');
 
         wordContainer.textContent = wordDashes;
     }
 }
-
+// Sets up the game board by creating letter buttons for user interaction.
 function setupGameBoard() {
-    const gameBoardContainer = document.getElementById('game-board');
     if (gameBoardContainer) {
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const alphabetArray = alphabet.split('');
@@ -177,22 +173,19 @@ function setupGameBoard() {
         });
     }
 }
-
+// Handles the click event for a letter button, updating the display and game board accordingly.
 function handleLetterClick(selectedLetter) {
     const gameBoardButtons = document.querySelectorAll('#game-board button');
-
     gameBoardButtons.forEach(button => {
         if (button.textContent === selectedLetter) {
             button.disabled = true;
             button.classList.add('disabled');
         }
     });
-    const selectedWord = localStorage.getItem('selectedWord');
     updateWordDisplay(selectedWord, selectedLetter);
 }
-
-function updateWordDisplay(selectedWord, selectedLetter) {
-    const wordContainer = document.getElementById('word');
+//Updates the displayed word based on the correctness of the guessed letter.
+function updateWordDisplay(selectedWord, selectedLetter) {  
     if (wordContainer) {
         const wordArray = selectedWord.split('');
         let updatedWord = wordContainer.textContent.split(' ');
@@ -208,7 +201,7 @@ function updateWordDisplay(selectedWord, selectedLetter) {
         const displayWord = updatedWord.join(' ');
         wordContainer.textContent = displayWord;
 
-        if (!displayWord.includes('_')) {
+        if (!displayWord.includes('-')) {
            
             const gameBoardButtons = document.querySelectorAll('#game-board button');
             gameBoardButtons.forEach(button => {
@@ -225,20 +218,22 @@ function updateWordDisplay(selectedWord, selectedLetter) {
                 title: 'Fantastic!',
                 text: 'You did it! You guessed the word! Great job, little word detective! Move on to the next word and let the adventure continue!',
                 timer: 5000,
-                showConfirmButton: false
+                showCloseButton: true,
+                showConfirmButton: false,
             });
         }
         
-
         if (!isLetterCorrect) {
              //https://sweetalert2.github.io/
-            Swal.fire({
+             Swal.fire({
                 icon: 'warning',
                 title: 'Oops, Not Quite Right!',
                 text: 'That letter doesn’t fit, but no worries! Try another one. You’re doing great!',
-                timer: 5000, 
-                showConfirmButton: false 
+                timer: 5000,
+                showCloseButton: true,
+                showConfirmButton: false, 
             });
+            
             chancesRemaining--;
             displayChances();
 
@@ -260,44 +255,36 @@ function updateWordDisplay(selectedWord, selectedLetter) {
     }
  
 }
-
+//Displays the remaining chances (hearts) on the game page.
 function displayChances() {
-    const chancesElement = document.getElementById('chances-text');
     if (chancesElement) {
         chancesElement.innerHTML = `<i class="fa-solid fa-heart custom-heart"></i> ${chancesRemaining}`;
     }
 }
+//Checks if there are more words available in the specified category for the user to guess.
+function areMoreWordsAvailable(category) {
 
-const changeButton = document.getElementById('change-category-button');
+    if (wordsByCategory.hasOwnProperty(category)) {
+        const wordIndex = parseInt(localStorage.getItem(`${category}_wordIndex`) || 0);
+        return wordIndex < wordsByCategory[category].length;
+    }
+}
+//Prepares the game by adding event listeners to buttons and setting up the audio toggle functionality.
+function prepGame() {
+
     if (changeButton) {
         changeButton.addEventListener('click', function () {
             redirectToCategoryPage();
         });
     }
 
-    const backToWelcomeButton = document.getElementById('back-to-welcome-button');
+    
     if (backToWelcomeButton) {
         backToWelcomeButton.addEventListener('click', function () {
             redirectToWelcomePage();
         });
     }
       
-    function areMoreWordsAvailable(category) {
-        const wordsByCategory = {
-            colors: ['RED', 'BLUE', 'YELLOW', 'GREEN', 'PINK'],
-            shapes: ['CIRCLE', 'SQUARE', 'TRIANGLE', 'STAR', 'HEART'],
-            fruits: ['APPLE', 'BANANA', 'ORANGE', 'STRAWBERRY', 'WATERMELON'],
-            vegetables: ['CARROT', 'BROCCOLI', 'TOMATO', 'CUCUMBER', 'SPINACH'],
-            numbers: ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'],
-            weather: ['SUNNY', 'RAINY', 'CLOUDY', 'WINDY', 'SNOWY'],
-            transportation: ['CAR', 'BUS', 'TRAIN', 'BOAT', 'AIRPLANE'],
-        };
-    
-        if (wordsByCategory.hasOwnProperty(category)) {
-            const wordIndex = parseInt(localStorage.getItem(`${category}_wordIndex`) || 0);
-            return wordIndex < wordsByCategory[category].length;
-        }
-    }
 
     if (nextWordButton) {
         nextWordButton.addEventListener('click', function () {
@@ -310,18 +297,25 @@ const changeButton = document.getElementById('change-category-button');
                 //https://sweetalert2.github.io/
                 Swal.fire({
                     icon: 'success',
-                    title: 'Wow,No More Words',
+                    title: 'Wow, No More Words',
                     text: `Fantastic job! You've guessed all the words in ${currentCategory} category. Explore another category for more exciting challenges!`,
-                    confirmButtonText: 'OK',
+                    showCancelButton: true,
+                    confirmButtonColor: '#02BCB7', 
+                    cancelButtonColor: '#FF5025', 
+                    confirmButtonText: 'Change Category',
+                    cancelButtonText: 'Back to Home',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        redirectToCategoryPage();
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        redirectToWelcomePage();
+                    }
                 });
+                
                
             }
         });
     }
-
-    const audio = document.getElementById('myAudio');
-    const toggleButton = document.getElementById('toggleButton');
-    const playPauseIcon = document.getElementById('playPauseIcon');
 
     if (toggleButton) {
         toggleButton.addEventListener('click', function () {
@@ -334,6 +328,10 @@ const changeButton = document.getElementById('change-category-button');
             }
         });
     }
-    
+
+}
+
+prepGame()
+ //Calls the initializeGuessGame function when the DOM content is fully loaded.   
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
 

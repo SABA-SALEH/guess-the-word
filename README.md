@@ -1,4 +1,4 @@
-![Logo]()
+
 # Welcome to "Guess the Word - Kids Edition"! 🌈🔍
 
 ## Introduction

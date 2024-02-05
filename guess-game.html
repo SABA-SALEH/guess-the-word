@@ -1,53 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Guess the Word Game">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-    <script src="https://kit.fontawesome.com/45b8f34d90.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <title>Guess Game</title>
-</head>
+       <!-- Metadata for character set, description, and viewport -->
+       <meta charset="UTF-8">
+       <meta name="description" content="Guess the Word Game">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <!-- Linking Bootstrap CSS for styling -->
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+       <!-- Linking SweetAlert2 CSS for custom alerts -->
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+       <!-- Linking Font Awesome icons -->
+       <script src="https://kit.fontawesome.com/45b8f34d90.js" crossorigin="anonymous"></script>
+       <!-- Favicon for the website -->
+       <link rel="icon" href="favicon.ico" type="image/x-icon">
+       <!-- Linking custom styles -->
+       <link rel="stylesheet" href="assets/css/styles.css">
+       
+       <title>Guess Game</title>
 <body>
+     <!-- Guess game container with background image -->
     <div class="guess-game-container">
             <div class="background-image"></div>
+             <!-- Card container for central content -->
             <div class="container card justify-content-center">
+                <!-- Displaying remaining chances -->
                 <div id="chances-text"></div>
+                <!-- Button to go back to the welcome page -->
                 <button type="button" class="btn btn-danger" onclick="redirectToWelcomePage()"><i class="fas fa-home"></i></button>
-
-
+                 <!-- Button to toggle background music -->
                 <button id="toggleButton" class="btn btn-danger" type="button" >
                     <i id="playPauseIcon" class="fas fa-play"></i>
                 </button>
-                
+                <!-- Audio element for background music -->
                 <audio id="myAudio" loop>
                     <source src="assets/audio/backgroundmusic.mp3" type="audio/mp3">
                     Your browser does not support the audio tag.
                 </audio>
                 <br>
+                <!-- Title container for the game -->
                 <div class="title-container">
                     <h1>Guess The Word </h1>
                 </div>
-        
+                <!-- Hint container to display hints -->
                 <div class="hint-container">
                     <span id="hint-text"></span>
                 </div>
-        
+                <!-- Container to display the word -->
                 <div class="word-container2">
                     <p id="word"></p>
                 </div>
-
+                <!-- Container for the game board -->
                 <div class="game-board-container">
-                    <div id="game-board" class="game-board">
-                        
+                    <div id="game-board" class="game-board">  
                     </div>
                 </div>
-                
+                <!-- Container for the buttons to proceed to the next word or change the category -->
                 <div class="container">
                     <div class="row justify-content-center">
                         <button id="next-word-button" class="next-button btn col-md-3">Next Word</button>
@@ -56,8 +64,9 @@
                 </div>
             </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/script.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom script -->
+<script  src="assets/js/script.js"></script>
 </body>
 </html>
