@@ -1,9 +1,9 @@
-
 # Welcome to "Guess the Word - Kids Edition"! 🌈🔍
 
 ## Introduction
 
 Embark on a delightful journey of learning and fun with our interactive word-guessing game specially designed for kids. In this engaging experience, children have the exciting opportunity to choose from a variety of categories including Colors, Shapes, Fruits, Vegetables, Numbers, and Weather. Tailored for young minds, our game offers an enjoyable way for kids to enhance their vocabulary and cognitive skills.
+![Screenshot](assets/documentation/screenshoots/screenshoot.png)
 
 ## How to Play
 
@@ -40,12 +40,6 @@ The interactive nature of the game makes learning enjoyable, encouraging kids to
 Kids have the freedom to explore various categories, promoting curiosity and a well-rounded understanding of different subjects.
 
 "Guess the Word - Kids Edition" is not just a game; it's a playful educational experience that combines entertainment with learning. Join us on this exciting adventure where every guess brings your child one step closer to a world of knowledge and discovery! 🚀📚
-
-## Screenshot
-![Screenshot](assets/documentation/screenshoots/screenshoot.png)
-![Screenshot](assets/documentation/screenshoots/screenshoot1.png)
-![Screenshot](assets/documentation/screenshoots/screenshoot2.png)
-![Screenshot](assets/documentation/screenshoots/screenshoot3.png)
 
 ## UX and UI
 ### Project and Customer Goals:
@@ -458,8 +452,25 @@ function setupGameBoard() {
 }
 
 ```
-## Credits
 
+## Credits
+- Project developed by SABA SALEH
+
+- [Color Picker](https://redketchup.io/color-picker): Used for selecting and managing colors in the project.
+
+- [SweetAlert2](https://sweetalert2.github.io/): Utilized for displaying beautiful and customizable pop-up alerts.
+
+- English Letters Background: Background image source available at [FreePik](https://www.freepik.com/free-photos-vectors/english-letters-background).
+
+- [Image Optimizer](http://www.imageoptimizer.net/Pages/Home.aspx): Used for optimizing and compressing images in the project.
+
+- [Favicon.cc](https://www.favicon.cc/?action=icon&file_id=816538): Source of the favicon used in the project.
+
+- [Bootstrap](https://getbootstrap.com/): Framework for building responsive and visually appealing web pages.
+
+- [Font Awesome](https://fontawesome.com/): Icon toolkit used for adding scalable icons to the project.
+
+- Background Music: [Chosic](https://www.chosic.com/download-audio/58131/): Source of the background music used in the project.
 
 ## Contributing
 If you have ideas for improvements or new features, I welcome contributions. Fork the repository, make your changes, and submit a pull request. Let's make the game even more exciting together!

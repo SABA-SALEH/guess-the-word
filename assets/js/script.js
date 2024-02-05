@@ -10,7 +10,6 @@ const selectedWord = localStorage.getItem('selectedWord');
 const hint = localStorage.getItem('hint');
 const wordContainer = document.getElementById('word');
 const gameBoardContainer = document.getElementById('game-board');
-const gameBoardButtons = document.querySelectorAll('#game-board button');
 const chancesElement = document.getElementById('chances-text');
 const wordsByCategory = {
     colors: ['RED', 'BLUE', 'YELLOW', 'GREEN', 'PINK'],
@@ -331,7 +330,7 @@ function prepGame() {
 
 }
 
-prepGame()
+prepGame();
  //Calls the initializeGuessGame function when the DOM content is fully loaded.   
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
 
