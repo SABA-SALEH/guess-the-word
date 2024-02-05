@@ -244,6 +244,7 @@ function updateWordDisplay(selectedWord, selectedLetter) {
                     icon: 'error',
                     title: 'Oops, You Lose!',
                     text: `Don't worry, you'll get it next time! The word was: ${secretWord}. Keep trying and have fun!`,
+                    confirmButtonColor: '#02BCB7',
                     confirmButtonText: 'OK'
                 }).then(() => {
                    
@@ -252,7 +253,6 @@ function updateWordDisplay(selectedWord, selectedLetter) {
             }
         }
     }
- 
 }
 //Displays the remaining chances (hearts) on the game page.
 function displayChances() {
@@ -298,20 +298,11 @@ function prepGame() {
                     icon: 'success',
                     title: 'Wow, No More Words',
                     text: `Fantastic job! You've guessed all the words in ${currentCategory} category. Explore another category for more exciting challenges!`,
-                    showCancelButton: true,
-                    confirmButtonColor: '#02BCB7', 
-                    cancelButtonColor: '#FF5025', 
+                    confirmButtonColor: '#02BCB7',
                     confirmButtonText: 'Change Category',
-                    cancelButtonText: 'Back to Home',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        redirectToCategoryPage();
-                    } else if (result.dismiss === Swal.DismissReason.cancel) {
-                        redirectToWelcomePage();
-                    }
-                });
-                
-               
+                }).then(() => {
+                    redirectToCategoryPage();
+                });  
             }
         });
     }
