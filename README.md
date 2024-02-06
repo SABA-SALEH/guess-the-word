@@ -456,21 +456,30 @@ function setupGameBoard() {
 ## Credits
 - Project developed by SABA SALEH
 
-- [Color Picker](https://redketchup.io/color-picker): Used for selecting and managing colors in the project.
-
-- [SweetAlert2](https://sweetalert2.github.io/): Utilized for displaying beautiful and customizable pop-up alerts.
-
-- English Letters Background: Background image source available at [FreePik](https://www.freepik.com/free-photos-vectors/english-letters-background).
-
-- [Image Optimizer](http://www.imageoptimizer.net/Pages/Home.aspx): Used for optimizing and compressing images in the project.
-
-- [Favicon.io](https://favicon.io/): Source of the favicon used in the project.
-
-- [Bootstrap](https://getbootstrap.com/): Framework for building responsive and visually appealing web pages.
-
-- [Font Awesome](https://fontawesome.com/): Icon toolkit used for adding scalable icons to the project.
-
-- Background Music: [Chosic](https://www.chosic.com/download-audio/58131/): Source of the background music used in the project.
+- **GitHub**: Used for version control of project files.
+- **GitPod**: An integrated development environment (IDE) used for coding.
+- **Balsamiq**: Used to create effective wireframes easily.
+- **W3Schools**: For providing valuable resources and tutorials for web development.
+- **Color Picker**: [RedKetchup](https://redketchup.io/color-picker) - Used for selecting and managing colors in the project.
+- **SweetAlert2**: [SweetAlert2](https://sweetalert2.github.io/) - Utilized for displaying beautiful and customizable pop-up alerts.
+- **English Letters Background**: Background image source available at [FreePik](https://www.freepik.com/free-photos-vectors/english-letters-background).
+- **Image Optimizer**: [Image Optimizer](http://www.imageoptimizer.net/Pages/Home.aspx) - Used for optimizing and compressing images in the project.
+- **Favicon.io**: [Favicon.io](https://favicon.io/) - Source of the favicon used in the project.
+- **Bootstrap**: [Bootstrap](https://getbootstrap.com/) - Framework for building responsive and visually appealing web pages.
+- **Font Awesome**: [Font Awesome](https://fontawesome.com/) - Icon toolkit used for adding scalable icons to the project.
+- **Background Music**: [Chosic](https://www.chosic.com/download-audio/58131/) - Source of the background music used in the project.
 
 ## Contributing
 If you have ideas for improvements or new features, I welcome contributions. Fork the repository, make your changes, and submit a pull request. Let's make the game even more exciting together!
+
+## Acknowledgements
+
+I would like to express my sincere gratitude to the following individuals and organizations who have contributed to this project in various ways:
+
+- **Oluwafemi Medale**: My mentor, for their guidance and valuable suggestions throughout the development of this project.
+- **Code Institute**: For their support in providing resources for this project.
+
+Finally, I want to express my appreciation to all the users and contributors who have provided feedback and helped improve this project.
+
+
+
