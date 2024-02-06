@@ -464,7 +464,7 @@ function setupGameBoard() {
 
 - [Image Optimizer](http://www.imageoptimizer.net/Pages/Home.aspx): Used for optimizing and compressing images in the project.
 
-- [Favicon.cc](https://www.favicon.cc/?action=icon&file_id=816538): Source of the favicon used in the project.
+- [Favicon.io](https://favicon.io/): Source of the favicon used in the project.
 
 - [Bootstrap](https://getbootstrap.com/): Framework for building responsive and visually appealing web pages.
 
