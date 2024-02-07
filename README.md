@@ -333,6 +333,30 @@ To run this project in a local IDE like Visual Studio Code, PyCharm, etc.:
     -  Verify that clicking the "Home" button redirects to the home page.
     -  Confirm that the game state is reset when returning to the home page.
 
+### Compatibility and Responsive Testing
+
+During the development of my Guessing Game, I conducted compatibility testing on the following browsers:
+
+- **Google Chrome:** I thoroughly tested the game on Google Chrome to ensure smooth functionality and compatibility.
+![Google Chrome:](assets/documentation/screenshoots/chrome.png)
+- **Mozilla Firefox:** The game was tested extensively on Mozilla Firefox to ensure compatibility and a consistent user experience.
+![Mozilla Firefox](assets/documentation/screenshoots/firefox.png)
+- **Microsoft Edge:** I verified compatibility and functionality on Microsoft Edge to ensure users have a seamless gaming experience.
+![Microsoft Edge](assets/documentation/screenshoots/microsoftedge.png)
+
+Additionally, I checked the responsiveness of the game using the "Am I Responsive" website (https://ui.dev/amiresponsive) to ensure it looks and functions well across various screen sizes.
+
+![Responsiveness](assets/documentation/screenshoots/screenshoot1.png)
+![Responsiveness](assets/documentation/screenshoots/screenshoot2.png)
+
+#### Mobile Testing
+
+I also conducted testing on mobile devices, specifically:
+
+- **iPhone:** I tested the game on iPhone using both Chrome and Safari browsers to ensure compatibility and responsiveness.
+![Chrome](assets/documentation/screenshoots/chrome.jpg)
+![Safari](assets/documentation/screenshoots/safari.jpg)
+
 ## Bugs and Fixes
 ### Issue 1: Preserving Category Value
 **Bug:** When starting a new game or moving to the next word, the category value is not preserved.
