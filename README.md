@@ -15,7 +15,7 @@ Embark on a delightful journey of learning and fun with our interactive word-gue
 
 - **Chances:** Keep an eye on your chances! You have a limited number of attempts to guess the word. Use them wisely.
 
-- **Victory or Defeat:** Successfully guess all the letters before running out of chances, and you'll be greeted with a cheerful "You Win!" message. If challenges arise, face them with grace, and the game will acknowledge your efforts with a comforting "You Lose!" message.
+- **Victory or Defeat:** Successfully guess all the letters before running out of chances, and you'll be greeted with a cheerful "You Win!" message. If challenges arise, face them with grace, and the game will acknowledge your efforts with a comforting "You Lose!" message.If you win, the game will move to the next word. If you lose, the game will start again with the same category.
 
 - **Next Word Challenge:** Move on to the next word in the same category only after you've successfully guessed the current one. It adds more excitement and challenge, making you solve each mystery before unlocking the next fun puzzle!
 
@@ -67,8 +67,9 @@ The primary objective of this project is to provide an engaging and intuitive us
 4. **Hints and Exploration:** Provide helpful hints to assist users in uncovering the words.
 ![Hints and Exploration](assets/documentation/screenshoots/ui.png)
 
-5. **Chances System:** Implement a system to track the number of attempts users have to guess the word.
+5. **Chances System:** Implement a system to track the number of attempts users have to guess the word. If the user runs out of chances, they will receive a "You Lose!" message containing the correct word. The game will then start again with the same category, allowing the player to make further attempts.
 ![Chances System](assets/documentation/screenshoots/chances.png)
+![alt text](assets/documentation/screenshoots/alert1.png)
 
 6. **SweetAlert Notifications:** Enhance the user experience with visually appealing pop-up notifications using SweetAlert for certain in-game events.
 ![SweetAlert](assets/documentation/screenshoots/alert.png)
@@ -248,7 +249,7 @@ To run this project in a local IDE like Visual Studio Code, PyCharm, etc.:
   - Once all letters are guessed, confirm that all letters are disabled, and the "Next Word" button is enabled.
   - User wins if they guess all letters in the word, and a "You Win!" message is displayed.
   - If the user selects an incorrect letter, display an alert and reduce chances.
-  - When the user runs out of chances, display the word and a "You Lose!" message.
+  - When the user runs out of chances, display the word and a "You Lose!" message.The game will start again with the same category.
   - Move to the next word within the same category after successfully guessing the current one.
   - Display an inspiring message when finishing all words in the category.
   - Allow the user to change the category at any time.
@@ -416,10 +417,13 @@ Swal.fire({
                     icon: 'error',
                     title: 'Oops, You Lose!',
                     text: `Don't worry, you'll get it next time! The word was: ${secretWord}. Keep trying and have fun!`,
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                   
-                   window.location.href = 'index.html';
+                    confirmButtonColor: '#02BCB7',
+                    confirmButtonText: 'Start Again'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        localStorage.setItem(`${localStorage.getItem('category')}_wordIndex`, 0);
+                        startGuessGame(localStorage.getItem('category'));
+                    }
                 });
 ```
 

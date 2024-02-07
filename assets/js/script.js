@@ -68,17 +68,26 @@ const audio = document.getElementById('myAudio');
 const toggleButton = document.getElementById('toggleButton');
 const playPauseIcon = document.getElementById('playPauseIcon');
 
-//Redirects the user to the category page while resetting the word index in local storage.
+/**
+ * Redirects the user to the category page while resetting the word index in local storage.
+ */
 function redirectToCategoryPage() {
     localStorage.setItem(`${currentCategory}_wordIndex`, 0);
     window.location.href = 'category.html';
 }
-//Redirects the user to the welcome page while resetting the word index in local storage.
+
+/**
+ * Redirects the user to the welcome page while resetting the word index in local storage.
+ */
 function redirectToWelcomePage() {
     localStorage.setItem(`${currentCategory}_wordIndex`, 0);
     window.location.href = 'index.html';
 }
-//Initiates the guessing game by setting up initial game data in local storage and redirecting to the game page.
+
+/**
+ * Initiates the guessing game by setting up initial game data in local storage, including the selected word, hint, and remaining chances, and redirects to the game page.
+ * @param {string} category The category of words for the guessing game.
+ */
 function startGuessGame(category) {
     const selectedWord = getWord(category);
     const hint = getHintForWord(category, selectedWord);
@@ -91,19 +100,24 @@ function startGuessGame(category) {
     chancesRemaining = initialChances;
     window.location.href = 'guess-game.html';
 }
-// Retrieves a word from the specified category, updating the word index in local storage.
+
+/**
+ * Retrieves a word from the specified category, updating the word index in local storage.
+ * @param {string} category The category of words from which to retrieve a word.
+ * @returns {string|null} The selected word from the category, or null if no words are available or the category is invalid.
+ */
 function getWord(category) {
     if (category && wordsByCategory.hasOwnProperty(category)) {
         const words = wordsByCategory[category];
 
         if (words && words.length > 0) {
             let wordIndex = parseInt(localStorage.getItem(`${category}_wordIndex`) || 0);
-        
+
             if (wordIndex < words.length) {
 
                 const selectedWord = words[wordIndex];
                 localStorage.setItem(`${category}_wordIndex`, wordIndex + 1);
-        
+
                 return selectedWord;
             } else {
                 console.log('No more words in the category.');
@@ -113,22 +127,35 @@ function getWord(category) {
             console.error('Category has no words.');
         }
 
-    return null;
+        return null;
+    }
 }
-}
-//Retrieves a hint for the given word in the specified category.
+
+/**
+ * Retrieves a hint for the given word in the specified category.
+ * @param {string} category The category of the word.
+ * @param {string} word The word for which to retrieve a hint.
+ * @returns {string} A hint for the word in the specified category, or 'No hint available' if no hint is found.
+ */
 function getHintForWord(category, word) {
-    
+
     return hintsByCategory[category][word] || 'No hint available';
 }
-//Displays the provided hint in the hint element on the game page.
+
+/**
+ * Displays the provided hint on the game page.
+ * @param {string} hint The hint to be displayed.
+ */
 function displayHint(hint) {
-   
+
     if (hintElement) {
         hintElement.textContent = hint;
     }
 }
-// Initializes the game by retrieving initial data from local storage and setting up the user interface.
+
+/**
+ *  Initializes the game by retrieving initial data from local storage and setting up the user interface.
+ */
 function initializeGuessGame() {
     chancesRemaining = parseInt(localStorage.getItem('chancesRemaining')) || 3;
     if (nextWordButton) {
@@ -137,18 +164,26 @@ function initializeGuessGame() {
 
     displayHint(hint);
     setupUI(selectedWord);
-    displayChances(); 
+    displayChances();
 }
-//Sets up the game interface by displaying the selected word and initializing the game board.
+
+/**
+ * Sets up the game interface by displaying the selected word and initializing the game board.
+ * @param {string} selectedWord The word chosen for the game.
+ */
 function setupUI(selectedWord) {
     displayWord(selectedWord);
     console.log('Setting up the game interface...');
     setupGameBoard();
     displayChances();
 }
-//Displays the selected word on the game page with dashes for each letter.
+
+/**
+ * Displays the selected word on the game page with dashes representing each letter.
+ * @param {string} selectedWord The word to be displayed with dashes for each letter.
+ */
 function displayWord(selectedWord) {
-    
+
     if (wordContainer) {
         const wordArray = selectedWord.split('');
         const wordDashes = wordArray.map(letter => (letter === ' ' ? ' ' : '-')).join(' ');
@@ -156,7 +191,10 @@ function displayWord(selectedWord) {
         wordContainer.textContent = wordDashes;
     }
 }
-// Sets up the game board by creating letter buttons for user interaction.
+
+/**
+ * Sets up the game board by creating letter buttons for user interaction.
+ */
 function setupGameBoard() {
     if (gameBoardContainer) {
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -172,7 +210,11 @@ function setupGameBoard() {
         });
     }
 }
-// Handles the click event for a letter button, updating the display and game board accordingly.
+
+/**
+ * Handles the click event for a letter button, updating the display and game board accordingly.
+ * @param {string} selectedLetter The letter chosen by the player.
+ */
 function handleLetterClick(selectedLetter) {
     const gameBoardButtons = document.querySelectorAll('#game-board button');
     gameBoardButtons.forEach(button => {
@@ -183,35 +225,43 @@ function handleLetterClick(selectedLetter) {
     });
     updateWordDisplay(selectedWord, selectedLetter);
 }
-//Updates the displayed word based on the correctness of the guessed letter.
-function updateWordDisplay(selectedWord, selectedLetter) {  
+
+/**
+ * Updates the displayed word based on the correctness of the guessed letter.
+ * @param {string} selectedWord The word chosen for the game.
+ * @param {string} selectedLetter The letter guessed by the player.
+ */
+function updateWordDisplay(selectedWord, selectedLetter) {
     if (wordContainer) {
         const wordArray = selectedWord.split('');
         let updatedWord = wordContainer.textContent.split(' ');
-
         let isLetterCorrect = false;
 
+        // Loop through each letter in the selected word
         for (let i = 0; i < wordArray.length; i++) {
             if (wordArray[i] === selectedLetter) {
                 updatedWord[i] = selectedLetter;
                 isLetterCorrect = true;
             }
         }
+
         const displayWord = updatedWord.join(' ');
         wordContainer.textContent = displayWord;
 
+        // If there are no more dashes in the displayed word (all letters guessed)
         if (!displayWord.includes('-')) {
-           
             const gameBoardButtons = document.querySelectorAll('#game-board button');
             gameBoardButtons.forEach(button => {
                 button.disabled = true;
             });
 
+            // Enable the next word button
             if (nextWordButton) {
                 nextWordButton.disabled = false;
             }
-           
-            //https://sweetalert2.github.io/
+
+            // Display a success message using SweetAlert2
+            // SweetAlert2: https://sweetalert2.github.io/
             Swal.fire({
                 icon: 'success',
                 title: 'Fantastic!',
@@ -221,46 +271,60 @@ function updateWordDisplay(selectedWord, selectedLetter) {
                 showConfirmButton: false,
             });
         }
-        
+
+        // If the guessed letter is incorrect
         if (!isLetterCorrect) {
-             //https://sweetalert2.github.io/
-             Swal.fire({
+            // Display a warning message using SweetAlert2
+            // SweetAlert2: https://sweetalert2.github.io/
+            Swal.fire({
                 icon: 'warning',
                 title: 'Oops, Not Quite Right!',
                 text: 'That letter doesn’t fit, but no worries! Try another one. You’re doing great!',
                 timer: 5000,
                 showCloseButton: true,
-                showConfirmButton: false, 
+                showConfirmButton: false,
             });
-            
+
+            // Decrease the remaining chances and update the display
             chancesRemaining--;
             displayChances();
 
+            // If no chances remaining
             if (chancesRemaining === 0) {
-                
                 const secretWord = localStorage.getItem('selectedWord');
-            //https://sweetalert2.github.io/
+                // Display an error message using SweetAlert2
+                // SweetAlert2: https://sweetalert2.github.io/
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops, You Lose!',
                     text: `Don't worry, you'll get it next time! The word was: ${secretWord}. Keep trying and have fun!`,
                     confirmButtonColor: '#02BCB7',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                   
-                   window.location.href = 'index.html';
+                    confirmButtonText: 'Start Again'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        localStorage.setItem(`${localStorage.getItem('category')}_wordIndex`, 0);
+                        startGuessGame(localStorage.getItem('category'));
+                    }
                 });
             }
         }
     }
 }
-//Displays the remaining chances (hearts) on the game page.
+
+/**
+ * Displays the remaining chances (hearts) on the game page.
+ */
 function displayChances() {
     if (chancesElement) {
         chancesElement.innerHTML = `<i class="fa-solid fa-heart custom-heart"></i> ${chancesRemaining}`;
     }
 }
-//Checks if there are more words available in the specified category for the user to guess.
+
+/**
+ * Checks if there are more words available in the specified category for the user to guess.
+ * @param {string} category The category of words to check for availability.
+ * @returns {boolean} True if more words are available, false otherwise.
+ */
 function areMoreWordsAvailable(category) {
 
     if (wordsByCategory.hasOwnProperty(category)) {
@@ -268,32 +332,36 @@ function areMoreWordsAvailable(category) {
         return wordIndex < wordsByCategory[category].length;
     }
 }
-//Prepares the game by adding event listeners to buttons and setting up the audio toggle functionality.
-function prepGame() {
 
+/**
+ * Prepares the game by adding event listeners to buttons and setting up the audio toggle functionality.
+ */
+function prepGame() {
+    // Add event listener to change category button
     if (changeButton) {
         changeButton.addEventListener('click', function () {
             redirectToCategoryPage();
         });
     }
 
-    
+    // Add event listener to back to welcome button
     if (backToWelcomeButton) {
         backToWelcomeButton.addEventListener('click', function () {
             redirectToWelcomePage();
         });
     }
-      
 
+    // Add event listener to next word button
     if (nextWordButton) {
         nextWordButton.addEventListener('click', function () {
             const currentCategory = localStorage.getItem('category');
-            
+
             if (areMoreWordsAvailable(currentCategory)) {
                 startGuessGame(currentCategory);
-                
+
             } else {
-                //https://sweetalert2.github.io/
+                // Display a success message if no more words are available in the category
+                // SweetAlert2: https://sweetalert2.github.io/
                 Swal.fire({
                     icon: 'success',
                     title: 'Wow, No More Words',
@@ -302,19 +370,20 @@ function prepGame() {
                     confirmButtonText: 'Change Category',
                 }).then(() => {
                     redirectToCategoryPage();
-                });  
+                });
             }
         });
     }
 
+    // Add event listener to toggle audio button
     if (toggleButton) {
         toggleButton.addEventListener('click', function () {
             if (audio.paused) {
                 audio.play();
-                playPauseIcon.className = 'fas fa-pause'; 
+                playPauseIcon.className = 'fas fa-pause';
             } else {
                 audio.pause();
-                playPauseIcon.className = 'fas fa-play'; 
+                playPauseIcon.className = 'fas fa-play';
             }
         });
     }
@@ -322,6 +391,6 @@ function prepGame() {
 }
 
 prepGame();
- //Calls the initializeGuessGame function when the DOM content is fully loaded.   
-document.addEventListener('DOMContentLoaded', initializeGuessGame);
 
+/**Calls the initializeGuessGame function when the DOM content is fully loaded.   */
+document.addEventListener('DOMContentLoaded', initializeGuessGame);
