@@ -1,65 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Metadata for character set, description, and viewport -->
     <meta charset="UTF-8">
     <meta name="description" content="Guess the Word Game">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Linking Bootstrap CSS for styling -->
+    <!-- Linking Bootstrap CSS for styling -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-     <!-- Linking custom styles -->
+    <!-- Linking custom styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
-      <!-- Linking Font Awesome icons -->
+    <!-- Linking Font Awesome icons -->
     <script src="https://kit.fontawesome.com/45b8f34d90.js" crossorigin="anonymous"></script>
     <!-- Favicon for the website -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <title> Guess Game</title>
 </head>
+
 <body>
-     <!-- Welcome container with background image -->
+    <!-- Welcome container with background image -->
     <div class="welcome-container">
         <div class="background-image"></div>
-         <!-- Card container for central content -->
+        <!-- Card container for central content -->
         <div class="container card justify-content-center">
             <!-- Letter circles forming the words "Guess" and "The Word" -->
-           <div class="letter-circles row justify-content-center">
-               <div class="word-container">
+            <div class="letter-circles row justify-content-center">
+                <div class="word-container">
                     <div class="col-3 col-md-2 letter-circle G">G</div>
                     <div class="col-3 col-md-2 letter-circle U">U</div>
                     <div class="col-3 col-md-2 letter-circle E">E</div>
                     <div class="col-3 col-md-2 letter-circle S">S</div>
                     <div class="col-3 col-md-2 letter-circle S">S</div>
-               </div>
+                </div>
 
                 <div class="word-container">
-                     <div class="col-3 col-md-2 letter-circle T">T</div>
-                     <div class="col-3 col-md-2 letter-circle H">H</div>
-                     <div class="col-3 col-md-2 letter-circle E">E</div>
+                    <div class="col-3 col-md-2 letter-circle T">T</div>
+                    <div class="col-3 col-md-2 letter-circle H">H</div>
+                    <div class="col-3 col-md-2 letter-circle E">E</div>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                     <div class="col-3 col-md-2 letter-circle W">W</div>
-                     <div class="col-3 col-md-2 letter-circle O">O</div>
-                     <div class="col-3 col-md-2 letter-circle R">R</div>
-                     <div class="col-3 col-md-2 letter-circle D">D</div>
+                    <div class="col-3 col-md-2 letter-circle W">W</div>
+                    <div class="col-3 col-md-2 letter-circle O">O</div>
+                    <div class="col-3 col-md-2 letter-circle R">R</div>
+                    <div class="col-3 col-md-2 letter-circle D">D</div>
                 </div>
-          </div>
-           <!-- How to play container with instructions -->
-               <div class="how-to-play-container">
-                <h2 class="super-fun-message">Get ready for a super fun learning adventure,each guess brings you closer to word victory!</h2>
-                <p><i class="fas fa-eye"></i> Pick a category: Colors, Shapes, Fruits, Vegetables, Numbers, or Weather.</p>
-                <p><i class="fas fa-gamepad"></i> Click letters on the board to guess the word in your chosen category.</p>
-                <p><i class="fas fa-lightbulb"></i> Benefit from a hint for word discovery. Explore different categories for more fun!</p>
-                <p><i class="fas fa-exclamation-circle"></i> Keep an eye on chances! Limited attempts to guess—use wisely.</p>
-                <p><i class="fas fa-arrow-right"></i> Move on to the next word in the same category only after you've successfully guessed the current one. Challenge yourself!</p>
-               </div>
-          <!-- Play button to start the game -->
-          <button class="play-button btn btn-success d-block mx-auto" onclick=" redirectToCategoryPage()">Play</button>
+            </div>
+            <!-- How to play container with instructions -->
+            <div class="how-to-play-container">
+                <h2 class="super-fun-message">Get ready for a super fun learning adventure,each guess brings you closer
+                    to word victory!</h2>
+                <p><i class="fas fa-eye"></i> Pick a category: Colors, Shapes, Fruits, Vegetables, Numbers, or Weather.
+                </p>
+                <p><i class="fas fa-gamepad"></i> Click letters on the board to guess the word in your chosen category.
+                </p>
+                <p><i class="fas fa-lightbulb"></i> Benefit from a hint for word discovery. Explore different categories
+                    for more fun!</p>
+                <p><i class="fas fa-exclamation-circle"></i> Keep an eye on chances! Limited attempts to guess—use
+                    wisely.</p>
+                <p><i class="fas fa-arrow-right"></i> Move on to the next word in the same category only after you've
+                    successfully guessed the current one. Challenge yourself!</p>
+            </div>
+            <!-- Play button to start the game -->
+            <button class="play-button btn btn-success d-block mx-auto"
+                onclick=" redirectToCategoryPage()">Play</button>
 
-       </div>
+        </div>
     </div>
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-     <!-- Custom script -->
-    <script  src="assets/js/script.js"></script>
+    <!-- Custom script -->
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>
