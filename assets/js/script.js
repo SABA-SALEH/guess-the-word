@@ -350,100 +350,88 @@ function prepGame() {
 
     // Add event listener to next word button
     if (nextWordButton) {
+        // Click event listener
         nextWordButton.addEventListener('click', function () {
-            const currentCategory = localStorage.getItem('category');
-            localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
-            if (areMoreWordsAvailable(currentCategory)) {
-                startGuessGame(currentCategory);
-            } else {
-                // Display a success message if no more words are available in the category
-                // SweetAlert2: https://sweetalert2.github.io/
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Wow, No More Words',
-                    text: `Fantastic job! You've guessed all the words in ${currentCategory} category. Explore another category for more exciting challenges!`,
-                    confirmButtonColor: '#02BCB7',
-                    confirmButtonText: 'Change Category',
-                }).then(() => {
-                    redirectToCategoryPage();
-                });
-            }
+            handleNextWordButtonClick();
         });
-        
-        // Add touch event listener for mobile devices
+        // Touch event listener
         nextWordButton.addEventListener('touchstart', function (event) {
-            event.preventDefault();
-            const currentCategory = localStorage.getItem('category');
-            localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
-            if (areMoreWordsAvailable(currentCategory)) {
-                startGuessGame(currentCategory);
-            } else {
-                // Display a success message if no more words are available in the category
-                // SweetAlert2: https://sweetalert2.github.io/
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Wow, No More Words',
-                    text: `Fantastic job! You've guessed all the words in ${currentCategory} category. Explore another category for more exciting challenges!`,
-                    confirmButtonColor: '#02BCB7',
-                    confirmButtonText: 'Change Category',
-                }).then(() => {
-                    redirectToCategoryPage();
-                });
-            }
+            event.preventDefault(); // Prevent default touch behavior
+            handleNextWordButtonClick();
         });
     }
 
     // Add event listener to toggle audio button
     if (toggleButton) {
         toggleButton.addEventListener('click', function () {
-            if (audio.paused) {
-                audio.play();
-                playPauseIcon.className = 'fas fa-pause';
-            } else {
-                audio.pause();
-                playPauseIcon.className = 'fas fa-play';
-            }
-        });
-
-        // Add touch event listener for mobile devices
-        toggleButton.addEventListener('touchstart', function (event) {
-            event.preventDefault();
-            if (audio.paused) {
-                audio.play();
-                playPauseIcon.className = 'fas fa-pause';
-            } else {
-                audio.pause();
-                playPauseIcon.className = 'fas fa-play';
-            }
+            toggleAudio();
         });
 
         // Load music state and playback position from localStorage when the page loads
-        window.addEventListener('load', () => {
-            const storedMusicState = localStorage.getItem('isMusicPlaying');
-            if (storedMusicState === 'true') {
-                const storedPlaybackPosition = parseFloat(localStorage.getItem('audioPlaybackPosition'));
-                if (!isNaN(storedPlaybackPosition)) {
-                    audio.currentTime = storedPlaybackPosition;
-                }
-                if (audio.paused) {
-                    audio.play();
-                    playPauseIcon.className = 'fas fa-pause';
-                }
-            } else {
-                if (!audio.paused) {
-                    audio.pause();
-                    playPauseIcon.className = 'fas fa-play';
-                }
-            }
-        });
-
+        window.addEventListener('load', loadMusicState);
         // Save music state and playback position to localStorage when the page is unloaded
-        window.addEventListener('beforeunload', () => {
-            localStorage.setItem('isMusicPlaying', !audio.paused);
-            localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
-        });
+        window.addEventListener('beforeunload', saveMusicState);
     }
 
+}
+
+// Function to handle click event for next word button
+function handleNextWordButtonClick() {
+    const currentCategory = localStorage.getItem('category');
+    localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
+
+    if (areMoreWordsAvailable(currentCategory)) {
+        startGuessGame(currentCategory);
+    } else {
+        // Display a success message if no more words are available in the category
+        // SweetAlert2: https://sweetalert2.github.io/
+        Swal.fire({
+            icon: 'success',
+            title: 'Wow, No More Words',
+            text: `Fantastic job! You've guessed all the words in ${currentCategory} category. Explore another category for more exciting challenges!`,
+            confirmButtonColor: '#02BCB7',
+            confirmButtonText: 'Change Category',
+        }).then(() => {
+            redirectToCategoryPage();
+        });
+    }
+}
+
+// Function to toggle audio play/pause
+function toggleAudio() {
+    if (audio.paused) {
+        audio.play();
+        playPauseIcon.className = 'fas fa-pause';
+    } else {
+        audio.pause();
+        playPauseIcon.className = 'fas fa-play';
+    }
+}
+
+// Function to load music state and playback position from localStorage
+function loadMusicState() {
+    const storedMusicState = localStorage.getItem('isMusicPlaying');
+    if (storedMusicState === 'true') {
+        const storedPlaybackPosition = parseFloat(localStorage.getItem('audioPlaybackPosition'));
+        if (!isNaN(storedPlaybackPosition)) {
+            audio.currentTime = storedPlaybackPosition;
+        }
+        if (audio.paused) {
+            audio.play();
+            playPauseIcon.className = 'fas fa-pause';
+        }
+    } else {
+        if (!audio.paused) {
+            audio.pause();
+            playPauseIcon.className = 'fas fa-play';
+        }
+    }
+}
+
+// Function to save music state and playback position to localStorage
+function saveMusicState() {
+    localStorage.setItem('isMusicPlaying', !audio.paused);
+    localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
 }
 
 prepGame();
