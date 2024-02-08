@@ -138,7 +138,6 @@ function getWord(category) {
  * @returns {string} A hint for the word in the specified category, or 'No hint available' if no hint is found.
  */
 function getHintForWord(category, word) {
-
     return hintsByCategory[category][word] || 'No hint available';
 }
 
@@ -147,7 +146,6 @@ function getHintForWord(category, word) {
  * @param {string} hint The hint to be displayed.
  */
 function displayHint(hint) {
-
     if (hintElement) {
         hintElement.textContent = hint;
     }
@@ -183,7 +181,6 @@ function setupUI(selectedWord) {
  * @param {string} selectedWord The word to be displayed with dashes for each letter.
  */
 function displayWord(selectedWord) {
-
     if (wordContainer) {
         const wordArray = selectedWord.split('');
         const wordDashes = wordArray.map(letter => (letter === ' ' ? ' ' : '-')).join(' ');
@@ -326,7 +323,6 @@ function displayChances() {
  * @returns {boolean} True if more words are available, false otherwise.
  */
 function areMoreWordsAvailable(category) {
-
     if (wordsByCategory.hasOwnProperty(category)) {
         const wordIndex = parseInt(localStorage.getItem(`${category}_wordIndex`) || 0);
         return wordIndex < wordsByCategory[category].length;
@@ -337,6 +333,7 @@ function areMoreWordsAvailable(category) {
  * Prepares the game by adding event listeners to buttons and setting up the audio toggle functionality.
  */
 function prepGame() {
+
     // Add event listener to change category button
     if (changeButton) {
         changeButton.addEventListener('click', function () {
@@ -355,10 +352,10 @@ function prepGame() {
     if (nextWordButton) {
         nextWordButton.addEventListener('click', function () {
             const currentCategory = localStorage.getItem('category');
+            localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
 
             if (areMoreWordsAvailable(currentCategory)) {
                 startGuessGame(currentCategory);
-
             } else {
                 // Display a success message if no more words are available in the category
                 // SweetAlert2: https://sweetalert2.github.io/
@@ -385,6 +382,32 @@ function prepGame() {
                 audio.pause();
                 playPauseIcon.className = 'fas fa-play';
             }
+        });
+
+        // Load music state and playback position from localStorage when the page loads
+        window.addEventListener('load', () => {
+            const storedMusicState = localStorage.getItem('isMusicPlaying');
+            if (storedMusicState === 'true') {
+                const storedPlaybackPosition = parseFloat(localStorage.getItem('audioPlaybackPosition'));
+                if (!isNaN(storedPlaybackPosition)) {
+                    audio.currentTime = storedPlaybackPosition;
+                }
+                if (audio.paused) {
+                    audio.play();
+                    playPauseIcon.className = 'fas fa-pause';
+                }
+            } else {
+                if (!audio.paused) {
+                    audio.pause();
+                    playPauseIcon.className = 'fas fa-play';
+                }
+            }
+        });
+
+        // Save music state and playback position to localStorage when the page is unloaded
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('isMusicPlaying', !audio.paused);
+            localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
         });
     }
 
