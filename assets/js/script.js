@@ -353,7 +353,28 @@ function prepGame() {
         nextWordButton.addEventListener('click', function () {
             const currentCategory = localStorage.getItem('category');
             localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
-
+            if (areMoreWordsAvailable(currentCategory)) {
+                startGuessGame(currentCategory);
+            } else {
+                // Display a success message if no more words are available in the category
+                // SweetAlert2: https://sweetalert2.github.io/
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Wow, No More Words',
+                    text: `Fantastic job! You've guessed all the words in ${currentCategory} category. Explore another category for more exciting challenges!`,
+                    confirmButtonColor: '#02BCB7',
+                    confirmButtonText: 'Change Category',
+                }).then(() => {
+                    redirectToCategoryPage();
+                });
+            }
+        });
+        
+        // Add touch event listener for mobile devices
+        nextWordButton.addEventListener('touchstart', function (event) {
+            event.preventDefault();
+            const currentCategory = localStorage.getItem('category');
+            localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
             if (areMoreWordsAvailable(currentCategory)) {
                 startGuessGame(currentCategory);
             } else {
@@ -375,6 +396,18 @@ function prepGame() {
     // Add event listener to toggle audio button
     if (toggleButton) {
         toggleButton.addEventListener('click', function () {
+            if (audio.paused) {
+                audio.play();
+                playPauseIcon.className = 'fas fa-pause';
+            } else {
+                audio.pause();
+                playPauseIcon.className = 'fas fa-play';
+            }
+        });
+
+        // Add touch event listener for mobile devices
+        toggleButton.addEventListener('touchstart', function (event) {
+            event.preventDefault();
             if (audio.paused) {
                 audio.play();
                 playPauseIcon.className = 'fas fa-pause';
