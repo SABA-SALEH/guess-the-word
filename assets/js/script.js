@@ -335,7 +335,7 @@ function prepGame() {
     const dummyElement = document.createElement('span');
     dummyElement.id = 'dummyElement';
     document.body.appendChild(dummyElement);
-    dummyElement.click();
+
     dummyElement.addEventListener('click', function () {
         audio.play();
     });
@@ -359,7 +359,8 @@ function prepGame() {
         nextWordButton.addEventListener('click', function () {
             handleNextWordButtonClick();
         });
-        // Touch event listener
+
+        // Touch event listener for mobile devices
         nextWordButton.addEventListener('touchstart', function (event) {
             event.preventDefault();
             handleNextWordButtonClick();
@@ -377,8 +378,8 @@ function prepGame() {
         // Save music state and playback position to localStorage when the page is unloaded
         window.addEventListener('beforeunload', saveMusicState);
     }
-}
 
+}
 
 /**
  * Function to handle click event for next word button
@@ -417,8 +418,8 @@ function toggleAudio() {
 }
 
 /**
- *  Function to load music state and playback position from localStorage
- * */
+ * Function to load music state and playback position from localStorage
+ */
 function loadMusicState() {
     const storedMusicState = localStorage.getItem('isMusicPlaying');
     if (storedMusicState === 'true') {
