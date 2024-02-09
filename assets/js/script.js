@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 let chancesRemaining;
-let audio; 
+let audio;
 const initialChances = 3;
 const nextWordButton = document.getElementById('next-word-button');
 const changeButton = document.getElementById('change-category-button');
@@ -332,6 +332,14 @@ function areMoreWordsAvailable(category) {
 function prepGame() {
     audio = document.getElementById('myAudio');
 
+    const dummyElement = document.createElement('span');
+    dummyElement.id = 'dummyElement';
+    document.body.appendChild(dummyElement);
+    dummyElement.click();
+    dummyElement.addEventListener('click', function () {
+        audio.play();
+    });
+
     // Add event listener to change category button
     if (changeButton) {
         changeButton.addEventListener('click', function () {
@@ -348,13 +356,12 @@ function prepGame() {
 
     // Add event listener to next word button
     if (nextWordButton) {
-        // Click event listener
         nextWordButton.addEventListener('click', function () {
             handleNextWordButtonClick();
         });
         // Touch event listener
         nextWordButton.addEventListener('touchstart', function (event) {
-            event.preventDefault(); // Prevent default touch behavior
+            event.preventDefault();
             handleNextWordButtonClick();
         });
     }
@@ -370,10 +377,12 @@ function prepGame() {
         // Save music state and playback position to localStorage when the page is unloaded
         window.addEventListener('beforeunload', saveMusicState);
     }
-
 }
 
-// Function to handle click event for next word button
+
+/**
+ * Function to handle click event for next word button
+ */
 function handleNextWordButtonClick() {
     const currentCategory = localStorage.getItem('category');
     localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
@@ -394,7 +403,9 @@ function handleNextWordButtonClick() {
     }
 }
 
-// Function to toggle audio play/pause
+/**
+ * Function to toggle audio play/pause
+ */
 function toggleAudio() {
     if (audio.paused) {
         audio.play();
@@ -405,7 +416,9 @@ function toggleAudio() {
     }
 }
 
-// Function to load music state and playback position from localStorage
+/**
+ *  Function to load music state and playback position from localStorage
+ * */
 function loadMusicState() {
     const storedMusicState = localStorage.getItem('isMusicPlaying');
     if (storedMusicState === 'true') {
@@ -425,14 +438,20 @@ function loadMusicState() {
     }
 }
 
-// Function to save music state and playback position to localStorage
+/**
+ * Function to save music state and playback position to localStorage
+ */
 function saveMusicState() {
     localStorage.setItem('isMusicPlaying', !audio.paused);
     localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
 }
 
-// Call the prepGame function when the DOM content is fully loaded
+/**
+ * Call the prepGame function when the DOM content is fully loaded
+ */
 document.addEventListener('DOMContentLoaded', prepGame);
 
-// Call the initializeGuessGame function when the DOM content is fully loaded
+/**
+ * Call the prepGame function when the DOM content is fully loaded
+ */
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
