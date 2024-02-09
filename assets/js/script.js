@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 let chancesRemaining;
+let audio; 
 const initialChances = 3;
 const nextWordButton = document.getElementById('next-word-button');
 const changeButton = document.getElementById('change-category-button');
@@ -64,7 +65,6 @@ const hintsByCategory = {
     },
 };
 
-const audio = document.getElementById('myAudio');
 const toggleButton = document.getElementById('toggleButton');
 const playPauseIcon = document.getElementById('playPauseIcon');
 
@@ -258,7 +258,6 @@ function updateWordDisplay(selectedWord, selectedLetter) {
             }
 
             // Display a success message using SweetAlert2
-            // SweetAlert2: https://sweetalert2.github.io/
             Swal.fire({
                 icon: 'success',
                 title: 'Fantastic!',
@@ -272,7 +271,6 @@ function updateWordDisplay(selectedWord, selectedLetter) {
         // If the guessed letter is incorrect
         if (!isLetterCorrect) {
             // Display a warning message using SweetAlert2
-            // SweetAlert2: https://sweetalert2.github.io/
             Swal.fire({
                 icon: 'warning',
                 title: 'Oops, Not Quite Right!',
@@ -290,7 +288,6 @@ function updateWordDisplay(selectedWord, selectedLetter) {
             if (chancesRemaining === 0) {
                 const secretWord = localStorage.getItem('selectedWord');
                 // Display an error message using SweetAlert2
-                // SweetAlert2: https://sweetalert2.github.io/
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops, You Lose!',
@@ -333,6 +330,7 @@ function areMoreWordsAvailable(category) {
  * Prepares the game by adding event listeners to buttons and setting up the audio toggle functionality.
  */
 function prepGame() {
+    audio = document.getElementById('myAudio');
 
     // Add event listener to change category button
     if (changeButton) {
@@ -384,7 +382,6 @@ function handleNextWordButtonClick() {
         startGuessGame(currentCategory);
     } else {
         // Display a success message if no more words are available in the category
-        // SweetAlert2: https://sweetalert2.github.io/
         Swal.fire({
             icon: 'success',
             title: 'Wow, No More Words',
@@ -434,7 +431,8 @@ function saveMusicState() {
     localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
 }
 
-prepGame();
+// Call the prepGame function when the DOM content is fully loaded
+document.addEventListener('DOMContentLoaded', prepGame);
 
-/**Calls the initializeGuessGame function when the DOM content is fully loaded.   */
+// Call the initializeGuessGame function when the DOM content is fully loaded
 document.addEventListener('DOMContentLoaded', initializeGuessGame);
