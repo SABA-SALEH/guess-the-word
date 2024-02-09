@@ -88,7 +88,7 @@ function redirectToWelcomePage() {
  * Initiates the guessing game by setting up initial game data in local storage, including the selected word, hint, and remaining chances, and redirects to the game page.
  * @param {string} category The category of words for the guessing game.
  */
-function startGuessGame(category, startAudioPlayback = true) {
+function startGuessGame(category) {
     const selectedWord = getWord(category);
     const hint = getHintForWord(category, selectedWord);
 
@@ -99,10 +99,6 @@ function startGuessGame(category, startAudioPlayback = true) {
 
     chancesRemaining = initialChances;
     window.location.href = 'guess-game.html';
-
-    if (startAudioPlayback && audio.paused) {
-        audio.play();
-    }
 }
 
 /**
@@ -393,7 +389,7 @@ function handleNextWordButtonClick() {
     localStorage.setItem('audioPlaybackPosition', audio.currentTime.toString());
 
     if (areMoreWordsAvailable(currentCategory)) {
-        startGuessGame(currentCategory, false);
+        startGuessGame(currentCategory);
     } else {
         // Display a success message if no more words are available in the category
         Swal.fire({
